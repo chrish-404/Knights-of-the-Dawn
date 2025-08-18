@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Midwifery Digital Handover</title>
+<style>
+body { font-family: Arial, sans-serif; margin:0; padding:20px; background:#f4f7f8; }
+h1 { text-align:center; color:#2c3e50; margin-bottom:20px; }
+.table-container { overflow-x:auto; margin-bottom:10px; position:relative; }
+table { width:100%; border-collapse:collapse; min-width:600px; background:#fff; }
+th, td { padding:6px 8px; border:1px solid #ccc; text-align:left; }
+th { background:#3498db; color:white; position:relative; }
+.btn { padding:3px 6px; margin-left:2px; border:none; border-radius:3px; cursor:pointer; font-size:12px; }
+.edit-btn { background:#f39c12; color:white; }
+.save-btn { background:#27ae60; color:white; }
+input[type="text"] { width:95%; box-sizing:border-box; padding:2px; }
+
+.alert-urgent { background:#e74c3c; color:white; }
+.alert-warning { background:#f1c40f; color:black; }
+.alert-none { background:#2ecc71; color:white; }
+
+#mobileSortContainer { text-align:center; margin-bottom:10px; display:none; }
+
+@media (max-width:768px){
+    #mobileSortContainer { display:block; }
+    #desktopSortBtn { display:none; }
+    table, thead, tbody, th, td, tr { display:block; }
+    thead tr { display:none; }
+    tbody tr { margin-bottom:8px; border:1px solid #ccc; border-radius:5px; padding:6px; background:#fff; }
+    td { border:none; padding:2px 0; position:relative; padding-left:40%; word-wrap: break-word; }
+    td::before { position:absolute; top:2px; left:8px; width:38%; font-weight:bold; white-space:nowrap; }
+    td:nth-of-type(1)::before{ content:"Patient Name"; }
+    td:nth-of-type(2)::before{ content:"Age"; }
+    td:nth-of-type(3)::before{ content:"Observation Notes"; }
+    td:nth-of-type(4)::before{ content:"Alerts"; }
+    td:nth-of-type(5)::before{ content:"Actions"; }
+}
+</style>
+</head>
+<body>
+<h1>Midwifery Ward Handover</h1>
+
+<div id="mobileSortContainer">
+    <button class="btn" onclick="toggleAlertSort()">Sort/Restore by Alerts</button>
+</div>
+
+<div class="table-container">
+    <table id="patientTable">
+        <thead>
+            <tr>
+                <th>Patient Name</th>
+                <th>Age</th>
+                <th>Observation Notes</th>
+                <th>Alerts
+                    <button class="btn" onclick="sortAlert(true)">▲</button>
+                    <button class="btn" onclick="sortAlert(false)">▼</button>
+                </th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Jane Doe</td>
+                <td>28</td>
+                <td class="notes-cell" onclick="showFullNote(this)">Stable, normal vital signs</td>
+                <td class="alert-cell">None</td>
+                <td><button class="btn edit-btn" onclick="editRow(this)">Edit</button></td>
+            </tr>
+            <tr>
+                <td>Mary Smith</td>
+                <td>32</td>
+                <td class="notes-cell" onclick="showFullNote(this)">High BP, needs monitoring</td>
+                <td class="alert-cell">Urgent</td>
+                <td><button class="btn edit-btn" onclick="editRow(this)">Edit</button></td>
+            </tr>
+            <tr>
+                <td>Linda Lee</td>
+                <td>30</td>
+                <td class="notes-cell" onclick="showFullNote(this)">Mild headache, stable</td>
+                <td class="alert-cell">Warning</td>
+                <td><button class="btn edit-btn" onclick="editRow(this)">Edit</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<script>
+let originalRows = [];
+function updateAlertColors() {
+    document.querySelectorAll("#patientTable tbody tr").forEach(row => {
+        const cell = row.querySelector(".alert-cell");
+        cell.classList.remove("alert-urgent","alert-warning","alert-none");
+        switch(cell.textContent.toLowerCase()){
+            case "urgent": cell.classList.add("alert-urgent"); break;
+            case "warning": cell.classList.add("alert-warning"); break;
+            default: cell.classList.add("alert-none"); break;
+        }
+    });
+}
+updateAlertColors();
+
+function sortAlert(asc=true){
+    const tbody = document.querySelector("#patientTable tbody");
+    const rows = Array.from(tbody.querySelectorAll("tr"));
+    const priority = {"urgent":1,"warning":2,"none":3};
+    rows.sort((a,b)=>{
+        const aAlert = a.querySelector(".alert-cell").textContent.toLowerCase();
+        const bAlert = b.querySelector(".alert-cell").textContent.toLowerCase();
+        return asc ? priority[aAlert]-priority[bAlert] : priority[bAlert]-priority[aAlert];
+    });
+    rows.forEach(r=>tbody.appendChild(r));
+}
+
+function toggleAlertSort() {
+    const tbody = document.querySelector("#patientTable tbody");
+    if (originalRows.length === 0) {
+        originalRows = Array.from(tbody.querySelectorAll("tr"));
+        sortAlert(true);
+    } else {
+        tbody.innerHTML = "";
+        originalRows.forEach(row => tbody.appendChild(row));
+        originalRows = [];
+    }
+    updateAlertColors();
+}
+
+function editRow(btn){
+    let row = btn.parentNode.parentNode;
+    let cells = row.querySelectorAll("td");
+    if(btn.textContent==='Edit'){
+        for(let i=0;i<cells.length-1;i++){
+            let value = cells[i].textContent;
+            cells[i].innerHTML = `<input type="text" value="${value}">`;
+        }
+        btn.textContent='Save';
+        btn.className='btn save-btn';
+    }else{
+        let updatedData = {};
+        const headers=["name","age","notes","alerts"];
+        for(let i=0;i<cells.length-1;i++){
+            let input=cells[i].querySelector("input");
+            if(input){
+                cells[i].textContent=input.value;
+                updatedData[headers[i]]=input.value;
+            }
+        }
+        btn.textContent='Edit';
+        btn.className='btn edit-btn';
+        updateAlertColors();
+        fetch('/modify/',{
+            method:'POST',
+            headers:{'Content-Type':'application/json','X-CSRFToken': getCSRFToken()},
+            body:JSON.stringify(updatedData)
+        })
+        .then(res=>res.json())
+        .then(data=>{
+            if(data.success) alert('Modification successful');
+            else alert('Modification failed: '+data.error);
+        })
+        .catch(err=>{ console.error(err); alert('Network error'); });
+    }
+}
+
+function getCSRFToken(){
+    const cookies=document.cookie.split(';');
+    for(let cookie of cookies){
+        let [name,value]=cookie.trim().split('=');
+        if(name==='csrftoken') return value;
+    }
+    return '';
+}
+
+function showFullNote(td){
+    alert(td.textContent);
+}
+</script>
+</body>
+</html>

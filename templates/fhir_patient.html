@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>FHIR Patients</title>
+</head>
+<body>
+  <h1>Patient List</h1>
+  <ul>
+    {% for entry in patients %}
+      <li>{{ entry.resource.name.0.text }} ({{ entry.resource.gender }})</li>
+    {% endfor %}
+  </ul>
+</body>
+</html>
