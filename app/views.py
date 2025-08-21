@@ -1,5 +1,6 @@
 import hashlib
 import secrets
+from datetime import datetime
 
 import requests
 import base64
@@ -44,13 +45,20 @@ def patient_list(request):
             "name": " ".join(r.get("name", [{}])[0].get("given", []) + [r.get("name", [{}])[0].get("family", "")]),
             "gender": r.get("gender"),
             "birthDate": r.get("birthDate"),
-            "phone": next((t["value"] for t in r.get("telecom", []) if t.get("system") == "phone"), ""),
-            "email": next((t["value"] for t in r.get("telecom", []) if t.get("system") == "email"), ""),
+            "phone": next((t.get("value") for t in r.get("telecom", []) if t.get("system") == "phone" and "value" in t), ""),
+            "email": next((t.get("value") for t in r.get("telecom", []) if t.get("system") == "email" and "value" in t), "")
         })
+    for p in patients:
+        if p.get("birthDate"):
+            birth_year = int(p["birthDate"][:4])
+            today_year = datetime.utcnow().year
+            p["age"] = today_year - birth_year
+        else:
+            p["age"] = None
     print(patients)
-    # return render(request, "patient_list.html", {"patients": patients})
+    return render(request, "patient-list.html", {"patients": patients})
     # return render(request, "patient-list.html", {"patient": patient_data})
-    return render(request, "fhir_patient.html", {"patients": patients})
+    # return render(request, "fhir_patient.html", {"patients": patients})
 
 
 def generate_pkce_pair():

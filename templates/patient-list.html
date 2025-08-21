@@ -1334,17 +1334,27 @@
 <div id="root">
     <div class="container-fluid patient-picker" style="max-width: 80em;">
         <div class="row">
-            <div class="col-sm-12"><h2 class="mt-1"><img src="{% static 'pictures/logo.png' %}" alt="SMART Logo" height="28"
-                                                         style="margin: -6px 10px 0px 0px;">Select Patient</h2></div>
+            <div class="col-sm-12">
+                <h2 class="mt-1">
+                    <img src="{% static 'pictures/logo.png' %}" alt="SMART Logo" height="28"
+                         style="margin: -6px 10px 0px 0px;">
+                    Select Patient
+                </h2>
+            </div>
         </div>
         <br>
         <div class="row">
             <div class="col-sm-12">
                 <form>
-                    <div class="input-group"><input type="search" class="form-control" id="search-input"
-                                                    placeholder="Search by name..." value=""><span
-                            class="input-group-btn"><button class="btn btn-default" type="submit"><i
-                            class="glyphicon glyphicon-search"></i> Search</button></span></div>
+                    <div class="input-group">
+                        <input type="search" class="form-control" id="search-input"
+                               placeholder="Search by name..." value="">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="submit">
+                                <i class="glyphicon glyphicon-search"></i> Search
+                            </button>
+                        </span>
+                    </div>
                 </form>
             </div>
         </div>
@@ -1354,86 +1364,59 @@
                 <table class="table">
                     <thead>
                     <tr class="no-hover">
-                        <th tabindex="0" class="col-md-4 col-sm-6" title="Click to sort by family name"><span
-                                class="col-title">Name&nbsp;</span><span
-                                class="text-muted glyphicon glyphicon-sort-by-attributes"></span></th>
-                        <th tabindex="0" class="col-md-2 col-sm-3 text-center" title="Click to sort by gender"><span
-                                class="col-title">Gender&nbsp;</span></th>
-                        <th tabindex="0" class="col-md-2 col-sm-3 text-left" title="Click to sort by age"><span
-                                class="col-title">Age&nbsp;</span></th>
+                        <th tabindex="0" class="col-md-4 col-sm-6" title="Click to sort by family name">
+                            <span class="col-title">Name&nbsp;</span>
+                            <span class="text-muted glyphicon glyphicon-sort-by-attributes"></span>
+                        </th>
+                        <th tabindex="0" class="col-md-2 col-sm-3 text-center" title="Click to sort by gender">
+                            <span class="col-title">Gender&nbsp;</span>
+                        </th>
+                        <th tabindex="0" class="col-md-2 col-sm-3 text-left" title="Click to sort by age">
+                            <span class="col-title">Age&nbsp;</span>
+                        </th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr tabindex="0" title="Click to select patient with ID 306933">
-                        <td><input type="radio" disabled="" style="margin-right: 1ex;"><span>B. Aansluittest</span></td>
-                        <td class="text-center"><span class="female">F</span></td>
-                        <td class="text-left">76 years</td>
-                    </tr>
-                    <tr tabindex="0" title="Click to select patient with ID 2e27c71e-30c8-4ceb-8c1c-5641e066c0a4">
-                        <td><input type="radio" disabled="" style="margin-right: 1ex;"><span>Ms. Buena Abbott</span>
-                        </td>
-                        <td class="text-center"><span class="female">F</span></td>
-                        <td class="text-left">72 years</td>
-                    </tr>
-                    <tr tabindex="0" title="Click to select patient with ID b2536dd3-bccd-4d22-8355-ab20acdf240b">
-                        <td><input type="radio" disabled="" style="margin-right: 1ex;"><span>Mrs. Barbera Gaylord</span>
-                        </td>
-                        <td class="text-center"><span class="female">F</span></td>
-                        <td class="text-left">54 years</td>
-                    </tr>
-                    <tr tabindex="0" title="Click to select patient with ID eb3271e1-ae1b-4644-9332-41e32c829486">
-                        <td><input type="radio" disabled="" style="margin-right: 1ex;"><span>Pok Abbott</span></td>
-                        <td class="text-center"><span class="female">F</span></td>
-                        <td class="text-left">20 years</td>
-                    </tr>
-                    <tr tabindex="0" title="Click to select patient with ID e66a2af9-6e66-4992-97a1-a16e6fd6d642">
-                        <td><input type="radio" disabled="" style="margin-right: 1ex;"><span>Mrs. Maryland Bednar</span>
-                        </td>
-                        <td class="text-center"><span class="female">F</span></td>
-                        <td class="text-left">78 years&nbsp;<span class="label label-warning">deceased</span></td>
-                    </tr>
-                    <tr tabindex="0" title="Click to select patient with ID 7ede9ef5-938f-49ce-b887-76cdd19fb039">
-                        <td><input type="radio" disabled=""
-                                   style="margin-right: 1ex;"><span>Mrs. Mabelle MacGyver</span></td>
-                        <td class="text-center"><span class="female">F</span></td>
-                        <td class="text-left">82 years&nbsp;<span class="label label-warning">deceased</span></td>
-                    </tr>
-                    <tr tabindex="0" title="Click to select patient with ID a509406a-5098-478c-b183-037d68a953d9">
-                        <td><input type="radio" disabled=""
-                                   style="margin-right: 1ex;"><span>Mrs. Francine Abernathy</span></td>
-                        <td class="text-center"><span class="female">F</span></td>
-                        <td class="text-left">56 years&nbsp;<span class="label label-warning">deceased</span></td>
-                    </tr>
-                    <tr tabindex="0" title="Click to select patient with ID 67eba314-7595-431c-9d62-8d30e0bd76ac">
-                        <td><input type="radio" disabled="" style="margin-right: 1ex;"><span>Mrs. Yu Abernathy</span>
-                        </td>
-                        <td class="text-center"><span class="female">F</span></td>
-                        <td class="text-left">48 years&nbsp;<span class="label label-warning">deceased</span></td>
-                    </tr>
-                    <tr tabindex="0" title="Click to select patient with ID aae6d4ab-c671-486a-9aa4-ba7ce93e804e">
-                        <td><input type="radio" disabled="" style="margin-right: 1ex;"><span>Mr. Carlton Abshire</span>
-                        </td>
-                        <td class="text-center"><span class="male">M</span></td>
-                        <td class="text-left">76 years&nbsp;<span class="label label-warning">deceased</span></td>
-                    </tr>
-                    <tr tabindex="0" title="Click to select patient with ID 260738d7-6854-4d05-ae7d-446c7fe642a7">
-                        <td><input type="radio" disabled="" style="margin-right: 1ex;"><span>Marylynn Abshire</span>
-                        </td>
-                        <td class="text-center"><span class="female">F</span></td>
-                        <td class="text-left">15 years</td>
-                    </tr>
+                    {% for p in patients %}
+                        <tr tabindex="0" title="Click to select patient with ID {{ p.id }}">
+                            <td>
+                                <input type="radio" disabled style="margin-right: 1ex;">
+                                <span>{{ p.name|default:"(No name)" }}</span>
+                            </td>
+                            <td class="text-center">
+                                {% if p.gender == "male" %}
+                                    <span class="male">M</span>
+                                {% elif p.gender == "female" %}
+                                    <span class="female">F</span>
+                                {% else %}
+                                    <span>-</span>
+                                {% endif %}
+                            </td>
+                            <td class="text-left">
+                                {% if p.age %}
+                                    {{ p.age }} years
+                                {% else %}
+                                    -
+                                {% endif %}
+                            </td>
+                        </tr>
+                    {% endfor %}
                     </tbody>
                     <tfoot>
                     <tr>
-                        <td colspan="4" style="padding: 1em 0px;"><br>
+                        <td colspan="4" style="padding: 1em 0px;">
+                            <br>
                             <div>
                                 <div class="pull-left text-muted" style="padding: 8px 0px;"></div>
                                 <div class="pull-right">
-                                    <button class="btn btn-default btn-sm" disabled="" type="button"
-                                            style="min-width: 7em;"><span class="glyphicon glyphicon-menu-left"></span>
-                                        Previous
-                                    </button>&nbsp;<button class="btn btn-primary btn-sm" style="min-width: 7em;">Next
-                                    <span class="glyphicon glyphicon-menu-right"></span></button>
+                                    <button class="btn btn-default btn-sm" disabled type="button"
+                                            style="min-width: 7em;">
+                                        <span class="glyphicon glyphicon-menu-left"></span> Previous
+                                    </button>
+                                    &nbsp;
+                                    <button class="btn btn-primary btn-sm" style="min-width: 7em;">
+                                        Next <span class="glyphicon glyphicon-menu-right"></span>
+                                    </button>
                                 </div>
                             </div>
                         </td>
