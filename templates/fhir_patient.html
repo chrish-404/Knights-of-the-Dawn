@@ -1,14 +1,48 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>FHIR Patients</title>
+    <meta charset="UTF-8">
+    <title>FHIR Patient List</title>
+    <style>
+        table {
+            width: 90%;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 8px 12px;
+            border: 1px solid #ccc;
+        }
+        th {
+            background: #f4f4f4;
+        }
+    </style>
 </head>
 <body>
-  <h1>Patient List</h1>
-  <ul>
-    {% for entry in patients %}
-      <li>{{ entry.resource.name.0.text }} ({{ entry.resource.gender }})</li>
-    {% endfor %}
-  </ul>
+    <h2 style="text-align:center;">FHIR Patient List</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Gender</th>
+                <th>Birth Date</th>
+                <th>Phone</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for p in patients %}
+            <tr>
+                <td>{{ p.id }}</td>
+                <td>{{ p.name|escape }}</td>
+                <td>{{ p.gender }}</td>
+                <td>{{ p.birthDate }}</td>
+                <td>{{ p.phone }}</td>
+                <td>{{ p.email }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 </body>
 </html>

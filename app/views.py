@@ -33,7 +33,25 @@ def patient_list(request):
     )
 
     patient_data = response.json()
-    return render(request, "patient-list.html", {"patient": patient_data})
+    print(patient_data)
+    entries = patient_data.get("entry", [])
+
+    patients = []
+    for e in entries:
+        r = e.get("resource", {})
+        patients.append({
+            "id": r.get("id"),
+            "name": " ".join(r.get("name", [{}])[0].get("given", []) + [r.get("name", [{}])[0].get("family", "")]),
+            "gender": r.get("gender"),
+            "birthDate": r.get("birthDate"),
+            "phone": next((t["value"] for t in r.get("telecom", []) if t.get("system") == "phone"), ""),
+            "email": next((t["value"] for t in r.get("telecom", []) if t.get("system") == "email"), ""),
+        })
+    print(patients)
+    # return render(request, "patient_list.html", {"patients": patients})
+    # return render(request, "patient-list.html", {"patient": patient_data})
+    return render(request, "fhir_patient.html", {"patients": patients})
+
 
 def generate_pkce_pair():
     code_verifier = base64.urlsafe_b64encode(secrets.token_bytes(32)).rstrip(b'=').decode('utf-8')
@@ -99,7 +117,6 @@ def launch(request):
                f"&redirect_uri={settings.FHIR_REDIRECT_URI}&scope={settings.FHIR_SCOPE}" \
                f"&aud={iss}&launch={launch}"
 
-    # return redirect("/login/")
     return redirect(auth_url)
 
 
