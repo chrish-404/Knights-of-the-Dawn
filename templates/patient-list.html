@@ -12,7 +12,6 @@
             src="https://www.googletagmanager.com/gtag/js?id=G-8MQK86TQS3&amp;cx=c&amp;gtm=457e58d1za200&amp;tag_exp=101509157~102015666~103116026~103200004~103233427~104684208~104684211~105033763~105033765~105103161~105103163~105231383~105231385"></script>
 </head>
 <body>
-<noscript>You need to enable JavaScript to run this app.</noscript>
 <div class="modal" id="modal-root"></div>
 <div id="root">
     <div class="container-fluid patient-picker" style="max-width: 80em;">
@@ -60,7 +59,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    {% for p in page_obj %}
+                    {% for p in patients %}
                         <tr tabindex="0" title="Click to select patient with ID {{ p.id }}">
                             <td>
                                 <input type="radio" disabled style="margin-right: 1ex;">
@@ -83,14 +82,18 @@
                                 {% endif %}
                             </td>
                         </tr>
+                    {% empty %}
+                        <tr>
+                            <td colspan="3" class="text-center">No patients found</td>
+                        </tr>
                     {% endfor %}
                     </tbody>
                     <tfoot>
                     <tr>
-                        <td colspan="4" style="padding: 1em 0px;">
+                        <td colspan="3" style="padding: 1em 0px;">
                             <div class="pagination">
-                                {% if page_obj.has_previous %}
-                                    <a class="btn btn-default btn-sm" href="?page={{ page_obj.previous_page_number }}">
+                                {% if prev_url %}
+                                    <a class="btn btn-default btn-sm" href="?fhir_url={{ prev_url|urlencode }}">
                                         <span class="glyphicon glyphicon-menu-left"></span> Previous
                                     </a>
                                 {% else %}
@@ -99,10 +102,8 @@
                                     </button>
                                 {% endif %}
 
-                                <span class="mx-2">Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span>
-
-                                {% if page_obj.has_next %}
-                                    <a class="btn btn-primary btn-sm" href="?page={{ page_obj.next_page_number }}">
+                                {% if next_url %}
+                                    <a class="btn btn-primary btn-sm" href="?fhir_url={{ next_url|urlencode }}">
                                         Next <span class="glyphicon glyphicon-menu-right"></span>
                                     </a>
                                 {% else %}

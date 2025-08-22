@@ -6,7 +6,6 @@ import requests
 import base64
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
-from django.core.paginator import Paginator
 
 from comp3820 import settings
 
@@ -26,15 +25,17 @@ def patient_list(request):
         return HttpResponse("No access token found")
 
     iss = request.session.get("iss")
-    patient_url = token_data.get("patient") or f"{iss.rstrip('/')}/Patient"
+    fhir_url = request.GET.get("fhir_url")
+    if not fhir_url:
+        fhir_url = token_data.get("patient") or f"{iss.rstrip('/')}/Patient"
+        fhir_url = f"{fhir_url}?_count=10"
 
     response = requests.get(
-        patient_url,
+        fhir_url,
         headers={"Authorization": f"Bearer {access_token}"}
     )
 
     patient_data = response.json()
-    # print(patient_data)
     entries = patient_data.get("entry", [])
 
     patients = []
@@ -48,6 +49,7 @@ def patient_list(request):
             "phone": next((t.get("value") for t in r.get("telecom", []) if t.get("system") == "phone" and "value" in t), ""),
             "email": next((t.get("value") for t in r.get("telecom", []) if t.get("system") == "email" and "value" in t), "")
         })
+
     for p in patients:
         if p.get("birthDate"):
             birth_year = int(p["birthDate"][:4])
@@ -55,12 +57,19 @@ def patient_list(request):
             p["age"] = today_year - birth_year
         else:
             p["age"] = None
-    # print(patients)
-    page_number = request.GET.get("page", 1)
-    paginator = Paginator(patients, 10)
-    page_obj = paginator.get_page(page_number)
 
-    return render(request, "patient-list.html", {"page_obj": page_obj})
+    next_url = prev_url = None
+    for link in patient_data.get("link", []):
+        if link.get("relation") == "next":
+            next_url = link.get("url")
+        elif link.get("relation") == "previous":
+            prev_url = link.get("url")
+
+    return render(request, "patient-list.html", {
+        "patients": patients,
+        "next_url": next_url,
+        "prev_url": prev_url
+    })
     return render(request, "patient-list.html", {"patients": patients})
     # return render(request, "patient-list.html", {"patient": patient_data})
     # return render(request, "fhir_patient.html", {"patients": patients})
