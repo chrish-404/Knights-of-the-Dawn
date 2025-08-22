@@ -6,7 +6,7 @@ import requests
 import base64
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
-
+from django.core.paginator import Paginator
 
 from comp3820 import settings
 
@@ -34,7 +34,7 @@ def patient_list(request):
     )
 
     patient_data = response.json()
-    print(patient_data)
+    # print(patient_data)
     entries = patient_data.get("entry", [])
 
     patients = []
@@ -55,7 +55,12 @@ def patient_list(request):
             p["age"] = today_year - birth_year
         else:
             p["age"] = None
-    print(patients)
+    # print(patients)
+    page_number = request.GET.get("page", 1)
+    paginator = Paginator(patients, 10)
+    page_obj = paginator.get_page(page_number)
+
+    return render(request, "patient-list.html", {"page_obj": page_obj})
     return render(request, "patient-list.html", {"patients": patients})
     # return render(request, "patient-list.html", {"patient": patient_data})
     # return render(request, "fhir_patient.html", {"patients": patients})
