@@ -4,9 +4,14 @@ from datetime import datetime
 
 import requests
 import base64
-from django.http import HttpResponse
+
+from django.contrib.auth import authenticate, login
+import json
+from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render, redirect
 
+from app.forms import LoginForm
+from app.models import User
 from comp3820 import settings
 
 
@@ -112,7 +117,7 @@ def fhir_callback(request):
     request.session["fhir_token"] = token_data
 
 
-    return redirect("/patient_list/")
+    return redirect("/login")
 
 
 def launch(request):
@@ -142,5 +147,24 @@ def launch(request):
     return redirect(auth_url)
 
 
-def login(request):
-    return render(request, 'login.html')
+def login_view(request):
+    if request.method == "GET":
+        return render(request, "login.html")
+
+    if request.method == 'POST':
+        data = json.loads(request.body)
+        form = LoginForm(data)
+        if not form.is_valid():
+            errors = {field: err[0] for field, err in form.errors.items()}
+            return JsonResponse({'status': 'fail', 'errors': errors})
+
+        username = form.cleaned_data['username']
+        password = form.cleaned_data['password']
+        user = authenticate(username=username, password=password)
+
+        if user:
+            login(request, user)
+        else:
+            return JsonResponse({'status': 'fail', 'errors': {'general': 'Username or password incorrect'}})
+
+        return JsonResponse({'status': 'success', 'redirect': '/patient_list/'})

@@ -7,7 +7,7 @@ from comp3820 import settings
 
 app_name = 'app'
 urlpatterns =[
-    path('login/', views.login),
+    path('login/', views.login_view, name='login'),
     path('index/', views.index),
     path('patient_list/', views.patient_list),
     path("launch/", views.launch, name="launch"),
