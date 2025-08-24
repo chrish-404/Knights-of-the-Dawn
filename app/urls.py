@@ -2,15 +2,15 @@
 from django.urls import path, re_path
 from django.views.static import serve
 
-from app import views
+from app.views import public, launch
 from comp3820 import settings
 
 app_name = 'app'
 urlpatterns = [
-    path('login/', views.login_view, name='login'),
-    path('index/', views.index),
-    path('patient_list/', views.patient_list),
-    path("launch/", views.launch, name="launch"),
-    path("callback/", views.fhir_callback, name="fhir_callback"),
-    path('search/', views.search_patients, name='search_patients'),
+    path('login/', launch.login_view, name='login'),
+    path('index/', public.index),
+    path('patient_list/', public.patient_list),
+    path("launch/", launch.launch, name="launch"),
+    path("callback/", launch.fhir_callback, name="fhir_callback"),
+    path('search/', public.search_patients, name='search_patients'),
 ]

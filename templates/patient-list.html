@@ -8,6 +8,11 @@
     <link rel="apple-touch-icon" href="{% static 'pictures/logo.png' %}">
     <link href="{% static 'bootstrap-3.3.6/css/bootstrap.min.css' %}" rel="stylesheet">
     <title>SMART Launcher - Select Patient</title>
+    <style>
+        th[data-sort] span.glyphicon {
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
 <div class="modal" id="modal-root"></div>
@@ -44,15 +49,17 @@
                 <table class="table">
                     <thead>
                     <tr class="no-hover">
-                        <th tabindex="0" class="col-md-4 col-sm-6" title="Click to sort by family name">
+                        <th tabindex="0" data-sort="name">
                             <span class="col-title">Name&nbsp;</span>
                             <span class="text-muted glyphicon glyphicon-sort-by-attributes"></span>
                         </th>
-                        <th tabindex="0" class="col-md-2 col-sm-3 text-center" title="Click to sort by gender">
+                        <th tabindex="0" data-sort="gender" class="text-center">
                             <span class="col-title">Gender&nbsp;</span>
+                            <span class="text-muted glyphicon glyphicon-sort-by-attributes"></span>
                         </th>
-                        <th tabindex="0" class="col-md-2 col-sm-3 text-left" title="Click to sort by age">
+                        <th tabindex="0" data-sort="age" class="text-left">
                             <span class="col-title">Age&nbsp;</span>
+                            <span class="text-muted glyphicon glyphicon-sort-by-attributes"></span>
                         </th>
                     </tr>
                     </thead>
@@ -61,9 +68,9 @@
                         <tr tabindex="0" title="Click to select patient with ID {{ p.id }}">
                             <td><input type="radio" disabled
                                        style="margin-right: 1ex;"><span>{{ p.name|default:"(No name)" }}</span></td>
-                            <td class="text-center">{% if p.gender == "male" %}<span class="male">M</span>
-                                {% elif p.gender == "female" %}<span class="female">F</span>
-                                {% else %}-{% endif %}</td>
+                            <td class="text-center">{% if p.gender == "male" %}
+                                <span class="male">M</span>{% elif p.gender == "female" %}
+                                <span class="female">F</span>{% else %}-{% endif %}</td>
                             <td class="text-left">{% if p.age %}{{ p.age }} {% else %}-{% endif %}</td>
                         </tr>
                     {% empty %}
@@ -72,35 +79,6 @@
                         </tr>
                     {% endfor %}
                     </tbody>
-                    <tfoot>
-                    <tr>
-                        <td colspan="3" style="padding: 1em 0px;">
-                            <div class="pagination">
-                                {% if has_prev %}
-                                    <a class="btn btn-default btn-sm" href="?page={{ page|add:"-1" }}&count={{ count }}">
-                                        <span class="glyphicon glyphicon-menu-left"></span> Previous
-                                    </a>
-                                {% else %}
-                                    <button class="btn btn-default btn-sm" disabled>
-                                        <span class="glyphicon glyphicon-menu-left"></span> Previous
-                                    </button>
-                                {% endif %}
-
-                                <span style="margin: 0 1em;">Page {{ page }}</span>
-
-                                {% if has_next %}
-                                    <a class="btn btn-primary btn-sm" href="?page={{ page|add:"1" }}&count={{ count }}">
-                                        Next <span class="glyphicon glyphicon-menu-right"></span>
-                                    </a>
-                                {% else %}
-                                    <button class="btn btn-primary btn-sm" disabled>
-                                        Next <span class="glyphicon glyphicon-menu-right"></span>
-                                    </button>
-                                {% endif %}
-                            </div>
-                        </td>
-                    </tr>
-                    </tfoot>
                 </table>
             </div>
         </div>
@@ -109,43 +87,80 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', function () {
-        const form = document.getElementById('search-form');
-        const input = document.getElementById('search-input');
-        const tbody = document.getElementById('patient-table-body');
+        const body = document.getElementById('patient-table-body');
+        const headers = document.querySelectorAll('th[data-sort]');
+        let states = {};
 
-        function fetchPatients(query) {
-            fetch(`/search/?q=${encodeURIComponent(query)}`)
-                .then(response => response.json())
-                .then(data => {
-                    tbody.innerHTML = '';
-                    if (data.patients.length === 0) {
-                        tbody.innerHTML = `<tr><td colspan="3" class="text-center">No patients found</td></tr>`;
-                        return;
+        Array.from(body.querySelectorAll('tr')).forEach((r, i) => r.dataset.idx = i);
+
+        headers.forEach(h => {
+            const key = h.dataset.sort;
+            states[key] = 0;
+            h.addEventListener('click', () => {
+                states[key] = (states[key] + 1) % 3;
+                sortTable(key, states[key]);
+            });
+        });
+
+        function sortTable(col, state) {
+            const rows = Array.from(body.querySelectorAll('tr'));
+            if (state === 0) {
+                rows.sort((a, b) => a.dataset.idx - b.dataset.idx);
+            } else {
+                rows.sort((a, b) => {
+                    let aVal, bVal;
+                    if (col === 'name') {
+                        aVal = a.querySelector('td span').textContent.toLowerCase();
+                        bVal = b.querySelector('td span').textContent.toLowerCase();
+                    } else if (col === 'gender') {
+                        aVal = a.children[1].textContent.trim();
+                        bVal = b.children[1].textContent.trim();
+                    } else if (col === 'age') {
+                        aVal = a.children[2].textContent.trim().replace(/\D+/g, '') || '0';
+                        bVal = b.children[2].textContent.trim().replace(/\D+/g, '') || '0';
+                        aVal = parseInt(aVal);
+                        bVal = parseInt(bVal);
                     }
-                    data.patients.forEach(p => {
-                        const gender = p.gender === 'male' ? 'M' : p.gender === 'female' ? 'F' : '-';
-                        const age = p.age ? `${p.age} years` : '-';
-                        tbody.innerHTML += `
-                        <tr tabindex="0" title="Click to select patient with ID ${p.id}">
-                            <td><input type="radio" disabled style="margin-right: 1ex;"><span>${p.name || "(No name)"}</span></td>
-                            <td class="text-center">${gender}</td>
-                            <td class="text-left">${age}</td>
-                        </tr>
-                        `;
-                    });
+                    if (aVal < bVal) return state === 1 ? -1 : 1;
+                    if (aVal > bVal) return state === 1 ? 1 : -1;
+                    return 0;
                 });
+            }
+            body.innerHTML = '';
+            rows.forEach(r => body.appendChild(r));
         }
 
+        const form = document.getElementById('search-form');
+        const input = document.getElementById('search-input');
         form.addEventListener('submit', function (e) {
             e.preventDefault();
             fetchPatients(input.value);
         });
-
-        let timeout = null;
+        let to = null;
         input.addEventListener('input', function () {
-            clearTimeout(timeout);
-            timeout = setTimeout(() => fetchPatients(input.value), 300);
+            clearTimeout(to);
+            to = setTimeout(() => fetchPatients(input.value), 300);
         });
+
+        function fetchPatients(q) {
+            if (!q.trim()) {
+                window.location.href = "/patient_list/";
+                return;
+            }
+            fetch(`/search/?q=${encodeURIComponent(q)}`).then(r => r.json()).then(d => {
+                body.innerHTML = '';
+                if (d.patients.length === 0) {
+                    body.innerHTML = `<tr><td colspan="3" class="text-center">No patients found</td></tr>`;
+                    return;
+                }
+                d.patients.forEach(p => {
+                    const g = p.gender === 'male' ? 'M' : p.gender === 'female' ? 'F' : '-';
+                    const a = p.age ? p.age : '-';
+                    body.innerHTML += `<tr tabindex="0" title="Click to select patient with ID ${p.id}"><td><input type="radio" disabled style="margin-right:1ex;"><span>${p.name || "(No name)"}</span></td><td class="text-center">${g}</td><td class="text-left">${a}</td></tr>`;
+                });
+                Array.from(body.querySelectorAll('tr')).forEach((r, i) => r.dataset.idx = i);
+            });
+        }
     });
 </script>
 </body>
