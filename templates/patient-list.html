@@ -8,8 +8,7 @@
     <link rel="apple-touch-icon" href="{% static 'pictures/logo.png' %}">
     <link href="{% static 'bootstrap-3.3.6/css/bootstrap.min.css' %}" rel="stylesheet">
     <title>SMART Launcher - Select Patient</title>
-    <script type="text/javascript" async=""
-            src="https://www.googletagmanager.com/gtag/js?id=G-8MQK86TQS3&amp;cx=c&amp;gtm=457e58d1za200&amp;tag_exp=101509157~102015666~103116026~103200004~103233427~104684208~104684211~105033763~105033765~105103161~105103163~105231383~105231385"></script>
+    <script type="text/javascript" async="" src="https://www.googletagmanager.com/gtag/js?id=G-8MQK86TQS3&amp;cx=c&amp;gtm=457e58d1za200&amp;tag_exp=101509157~102015666~103116026~103200004~103233427~104684208~104684211~105033763~105033765~105103161~105103163~105231383~105231385"></script>
 </head>
 <body>
 <div class="modal" id="modal-root"></div>
@@ -18,8 +17,7 @@
         <div class="row">
             <div class="col-sm-12">
                 <h2 class="mt-1">
-                    <img src="{% static 'pictures/logo.png' %}" alt="SMART Logo" height="28"
-                         style="margin: -6px 10px 0px 0px;">
+                    <img src="{% static 'pictures/logo.png' %}" alt="SMART Logo" height="28" style="margin: -6px 10px 0px 0px;">
                     Select Patient
                 </h2>
             </div>
@@ -27,10 +25,9 @@
         <br>
         <div class="row">
             <div class="col-sm-12">
-                <form>
+                <form id="search-form">
                     <div class="input-group">
-                        <input type="search" class="form-control" id="search-input"
-                               placeholder="Search by name..." value="">
+                        <input type="search" class="form-control" id="search-input" name="q" placeholder="Search by name..." value="">
                         <span class="input-group-btn">
                             <button class="btn btn-default" type="submit">
                                 <i class="glyphicon glyphicon-search"></i> Search
@@ -58,34 +55,15 @@
                         </th>
                     </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="patient-table-body">
                     {% for p in patients %}
                         <tr tabindex="0" title="Click to select patient with ID {{ p.id }}">
-                            <td>
-                                <input type="radio" disabled style="margin-right: 1ex;">
-                                <span>{{ p.name|default:"(No name)" }}</span>
-                            </td>
-                            <td class="text-center">
-                                {% if p.gender == "male" %}
-                                    <span class="male">M</span>
-                                {% elif p.gender == "female" %}
-                                    <span class="female">F</span>
-                                {% else %}
-                                    <span>-</span>
-                                {% endif %}
-                            </td>
-                            <td class="text-left">
-                                {% if p.age %}
-                                    {{ p.age }} years
-                                {% else %}
-                                    -
-                                {% endif %}
-                            </td>
+                            <td><input type="radio" disabled style="margin-right: 1ex;"><span>{{ p.name|default:"(No name)" }}</span></td>
+                            <td class="text-center">{% if p.gender == "male" %}<span class="male">M</span>{% elif p.gender == "female" %}<span class="female">F</span>{% else %}<span>-</span>{% endif %}</td>
+                            <td class="text-left">{% if p.age %}{{ p.age }} years{% else %}-{% endif %}</td>
                         </tr>
                     {% empty %}
-                        <tr>
-                            <td colspan="3" class="text-center">No patients found</td>
-                        </tr>
+                        <tr><td colspan="3" class="text-center">No patients found</td></tr>
                     {% endfor %}
                     </tbody>
                     <tfoot>
@@ -93,23 +71,14 @@
                         <td colspan="3" style="padding: 1em 0px;">
                             <div class="pagination">
                                 {% if prev_url %}
-                                    <a class="btn btn-default btn-sm" href="?fhir_url={{ prev_url|urlencode }}">
-                                        <span class="glyphicon glyphicon-menu-left"></span> Previous
-                                    </a>
+                                    <a class="btn btn-default btn-sm" href="?fhir_url={{ prev_url|urlencode }}"><span class="glyphicon glyphicon-menu-left"></span> Previous</a>
                                 {% else %}
-                                    <button class="btn btn-default btn-sm" disabled>
-                                        <span class="glyphicon glyphicon-menu-left"></span> Previous
-                                    </button>
+                                    <button class="btn btn-default btn-sm" disabled><span class="glyphicon glyphicon-menu-left"></span> Previous</button>
                                 {% endif %}
-
                                 {% if next_url %}
-                                    <a class="btn btn-primary btn-sm" href="?fhir_url={{ next_url|urlencode }}">
-                                        Next <span class="glyphicon glyphicon-menu-right"></span>
-                                    </a>
+                                    <a class="btn btn-primary btn-sm" href="?fhir_url={{ next_url|urlencode }}">Next <span class="glyphicon glyphicon-menu-right"></span></a>
                                 {% else %}
-                                    <button class="btn btn-primary btn-sm" disabled>
-                                        Next <span class="glyphicon glyphicon-menu-right"></span>
-                                    </button>
+                                    <button class="btn btn-primary btn-sm" disabled>Next <span class="glyphicon glyphicon-menu-right"></span></button>
                                 {% endif %}
                             </div>
                         </td>
@@ -120,7 +89,46 @@
         </div>
     </div>
 </div>
-<script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-109693963-1"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('search-form');
+    const input = document.getElementById('search-input');
+    const tbody = document.getElementById('patient-table-body');
+
+    function fetchPatients(query) {
+        fetch(`/search/?q=${encodeURIComponent(query)}`)
+            .then(response => response.json())
+            .then(data => {
+                tbody.innerHTML = '';
+                if (data.patients.length === 0) {
+                    tbody.innerHTML = `<tr><td colspan="3" class="text-center">No patients found</td></tr>`;
+                    return;
+                }
+                data.patients.forEach(p => {
+                    const gender = p.gender === 'male' ? 'M' : p.gender === 'female' ? 'F' : '-';
+                    const age = p.age ? `${p.age} years` : '-';
+                    tbody.innerHTML += `
+                        <tr tabindex="0" title="Click to select patient with ID ${p.id}">
+                            <td><input type="radio" disabled style="margin-right: 1ex;"><span>${p.name || "(No name)"}</span></td>
+                            <td class="text-center">${gender}</td>
+                            <td class="text-left">${age}</td>
+                        </tr>
+                    `;
+                });
+            });
+    }
+
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        fetchPatients(input.value);
+    });
+
+    let timeout = null;
+    input.addEventListener('input', function() {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => fetchPatients(input.value), 300);
+    });
+});
+</script>
 </body>
-<div id="immersive-translate-browser-popup" style="all: initial"></div>
 </html>

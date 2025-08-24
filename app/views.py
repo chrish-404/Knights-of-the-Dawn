@@ -1,17 +1,19 @@
 import hashlib
 import secrets
-from datetime import datetime
+from datetime import datetime, date
 
 import requests
 import base64
 
 from django.contrib.auth import authenticate, login
 import json
+
+from django.contrib.staticfiles import finders
 from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render, redirect
 
 from app.forms import LoginForm
-from app.models import User
+from app.models import User, MotherChild
 from comp3820 import settings
 
 
@@ -19,11 +21,10 @@ from comp3820 import settings
 def index(request):
     return render(request, 'index.html')
 
-
 def patient_list(request):
     token_data = request.session.get("fhir_token")
     if not token_data:
-        return redirect("fhir_login")
+        return redirect("app:login")
 
     access_token = token_data.get("access_token")
     if not access_token:
@@ -75,18 +76,9 @@ def patient_list(request):
         "next_url": next_url,
         "prev_url": prev_url
     })
-    return render(request, "patient-list.html", {"patients": patients})
+
     # return render(request, "patient-list.html", {"patient": patient_data})
     # return render(request, "fhir_patient.html", {"patients": patients})
-
-
-def generate_pkce_pair():
-    code_verifier = base64.urlsafe_b64encode(secrets.token_bytes(32)).rstrip(b'=').decode('utf-8')
-    code_challenge = base64.urlsafe_b64encode(
-        hashlib.sha256(code_verifier.encode()).digest()
-    ).rstrip(b'=').decode('utf-8')
-    return code_verifier, code_challenge
-
 
 def fhir_callback(request):
     code = request.GET.get("code")
@@ -114,10 +106,99 @@ def fhir_callback(request):
     )
 
     token_data = token_response.json()
+    access_token = token_data.get("access_token")
+    if not access_token:
+        return HttpResponse("Failed to obtain access token")
     request.session["fhir_token"] = token_data
 
+    bundle_file_path = finders.find("data.json")
+    if not bundle_file_path:
+        return HttpResponse("data.json not found in static files")
 
-    return redirect("/login")
+    with open(bundle_file_path, "r", encoding="utf-8") as f:
+        bundle_data = json.load(f)
+
+    bundle_data["type"] = "transaction"
+    for entry in bundle_data.get("entry", []):
+        resource = entry.get("resource")
+        if not resource or "resourceType" not in resource or "id" not in resource:
+            continue
+
+        # 处理 name 字段，保证搜索可用
+        if resource.get("name"):
+            name_obj = resource["name"][0]
+            if "text" in name_obj and ("given" not in name_obj or "family" not in name_obj):
+                parts = name_obj["text"].split()
+                name_obj["given"] = parts[:-1] if len(parts) > 1 else parts
+                name_obj["family"] = parts[-1] if len(parts) > 1 else parts[0]
+
+        resource_type = resource["resourceType"]
+        resource_id = resource["id"]
+        entry["request"] = {
+            "method": "PUT",
+            "url": f"{resource_type}/{resource_id}"
+        }
+
+    headers = {
+        "Authorization": f"Bearer {access_token}",
+        "Content-Type": "application/fhir+json"
+    }
+
+    fhir_base_url = iss.rstrip('/')
+
+    r_post = requests.post(fhir_base_url, headers=headers, json=bundle_data)
+    if r_post.status_code not in [200, 201]:
+        return HttpResponse(f"Failed to upload Bundle: {r_post.status_code}, {r_post.text}")
+
+    # count = 0
+    # for entry in bundle_data.get("entry", []):
+    #     resource = entry.get("resource")
+    #     if not resource:
+    #         continue
+    #
+    #     if resource.get("resourceType") == "RelatedPerson":
+    #         mother_ref = resource["patient"]["reference"]
+    #         mother_id = mother_ref.split("/")[1]
+    #
+    #         if resource.get("name"):
+    #             name_obj = resource["name"][0]
+    #             if "text" in name_obj:
+    #                 mother_name = name_obj["text"]
+    #                 child_name = name_obj["text"]
+    #             else:
+    #                 given = name_obj.get("given", [])
+    #                 family = name_obj.get("family", "")
+    #                 full_name = " ".join(given + [family]).strip()
+    #                 if full_name:
+    #                     mother_name = full_name
+    #                     child_name = full_name
+    #                 else:
+    #                     mother_name = "(No name)"
+    #                     child_name = "(No name)"
+    #         else:
+    #             mother_name = "(No name)"
+    #             child_name = "(No name)"
+    #
+    #         child_id = resource.get("id", f"child-{mother_id}")
+    #
+    #         obj, created = MotherChild.objects.get_or_create(
+    #             mother_id=mother_id,
+    #             child_id=child_id,
+    #             defaults={
+    #                 "mother_name": mother_name,
+    #                 "child_name": child_name,
+    #             }
+    #         )
+    #         if not created:
+    #             obj.mother_name = mother_name
+    #             obj.child_name = child_name
+    #             obj.save()
+    #
+    #         count += 1
+    # print(f"Imported {count} mother-child records into database.")
+
+    return redirect("/login/")
+    return redirect("/patient_list/")
 
 
 def launch(request):
@@ -168,3 +249,69 @@ def login_view(request):
             return JsonResponse({'status': 'fail', 'errors': {'general': 'Username or password incorrect'}})
 
         return JsonResponse({'status': 'success', 'redirect': '/patient_list/'})
+
+
+
+
+def search_patients(request):
+    token_data = request.session.get("fhir_token")
+    if not token_data:
+        return HttpResponse("No access token found")
+
+    access_token = token_data.get("access_token")
+    if not access_token:
+        return HttpResponse("No access token found")
+
+    iss = request.session.get("iss")
+    fhir_url = request.GET.get("fhir_url")
+    if not fhir_url:
+        fhir_url = token_data.get("patient") or f"{iss.rstrip('/')}/Patient"
+
+    if "?" in fhir_url:
+        fhir_url += "&_count=10"
+    else:
+        fhir_url += "?_count=10"
+
+    query = request.GET.get("q", "")
+    if query:
+        fhir_url += f"&name={query}"
+
+    headers = {"Authorization": f"Bearer {access_token}"}
+    try:
+        response = requests.get(fhir_url, headers=headers, timeout=10)
+        response.raise_for_status()
+        data = response.json()
+    except Exception as e:
+        return JsonResponse({'patients': [], 'error': str(e)})
+
+    patients = []
+    for entry in data.get('entry', []):
+        patient = entry['resource']
+        patients.append({
+            'id': patient.get('id'),
+            'name': get_patient_name(patient),
+            'gender': patient.get('gender'),
+            'age': calculate_age(patient.get('birthDate')) if patient.get('birthDate') else None
+        })
+
+    return JsonResponse({'patients': patients})
+
+
+def get_patient_name(patient):
+    if not patient.get("name"):
+        return "(No name)"
+    name_obj = patient["name"][0]
+    if "text" in name_obj:
+        return name_obj["text"]
+    given = name_obj.get("given", [])
+    family = name_obj.get("family", "")
+    return " ".join(given + [family]).strip() or "(No name)"
+
+
+def calculate_age(birth_date):
+    try:
+        birth = datetime.strptime(birth_date, '%Y-%m-%d').date()
+        today = date.today()
+        return today.year - birth.year - ((today.month, today.day) < (birth.month, birth.day))
+    except:
+        return None

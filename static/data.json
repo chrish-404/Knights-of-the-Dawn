@@ -1,0 +1,6845 @@
+{
+  "resourceType": "Bundle",
+  "type": "collection",
+  "id": "bundle-8ddf5355",
+  "entry": [
+    {
+      "resource": {
+        "resourceType": "Patient",
+        "id": "mother-e81d8af0",
+        "identifier": [
+          {
+            "system": "urn:sys:mrn",
+            "value": "MRN-CASE01"
+          }
+        ],
+        "name": [
+          {
+            "use": "official",
+            "text": "Sophia Smith"
+          }
+        ],
+        "gender": "female",
+        "birthDate": "1982-04-17"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Patient",
+        "id": "baby-b2d7c006",
+        "identifier": [
+          {
+            "system": "urn:sys:nbn",
+            "value": "NBN-CASE01"
+          }
+        ],
+        "name": [
+          {
+            "use": "official",
+            "text": "William "
+          }
+        ],
+        "gender": "female",
+        "birthDate": "2025-08-20",
+        "link": [
+          {
+            "other": {
+              "reference": "Patient/mother-e81d8af0"
+            },
+            "type": "seealso"
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "enc-447142f0",
+        "status": "finished",
+        "class": {
+          "code": "IMP",
+          "display": "inpatient encounter"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "183460006",
+                "display": "Labor and delivery"
+              }
+            ]
+          }
+        ],
+        "subject": {
+          "reference": "Patient/mother-e81d8af0"
+        },
+        "period": {
+          "start": "2025-08-20T09:30:00+10:00",
+          "end": "2025-08-20T19:30:00+10:00"
+        },
+        "identifier": [
+          {
+            "system": "urn:sys:encounter",
+            "value": "CASE01-L&D"
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "proc-a5b1de9b",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "code": "11466000",
+              "system": "http://snomed.info/sct",
+              "display": "Cesarean section"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-e81d8af0"
+        },
+        "performedDateTime": "2025-08-20T17:30:00+10:00",
+        "encounter": {
+          "reference": "Encounter/enc-447142f0"
+        }
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "obs-382b8165",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "18185-9",
+              "display": "Gestational age"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-e81d8af0"
+        },
+        "effectiveDateTime": "2025-08-20T17:30:00+10:00",
+        "valueQuantity": {
+          "value": 36.714285714285715,
+          "unit": "weeks",
+          "system": "http://unitsofmeasure.org",
+          "code": "wk"
+        }
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "obs-46514604",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "85354-9",
+              "display": "Blood pressure panel"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-e81d8af0"
+        },
+        "effectiveDateTime": "2025-08-20T16:30:00+10:00",
+        "component": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8480-6",
+                  "display": "Systolic blood pressure"
+                }
+              ]
+            },
+            "valueQuantity": {
+              "value": 124,
+              "unit": "mmHg"
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8462-4",
+                  "display": "Diastolic blood pressure"
+                }
+              ]
+            },
+            "valueQuantity": {
+              "value": 87,
+              "unit": "mmHg"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "obs-fe790410",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "56033-7",
+              "display": "Fetal heart rate"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-e81d8af0"
+        },
+        "effectiveDateTime": "2025-08-20T15:30:00+10:00",
+        "valueQuantity": {
+          "value": 148,
+          "unit": "beats/min"
+        }
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "obs-ffb9e314",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "11449-6",
+              "display": "History of pregnancies Narrative"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-e81d8af0"
+        },
+        "effectiveDateTime": "2025-08-19T17:30:00+10:00",
+        "valueString": "G2P0. Previous obstetric history: GBS positive in prior pregnancy."
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Condition",
+        "id": "cond-bae2ac27",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "19894004",
+              "display": "Asthma"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-e81d8af0"
+        },
+        "onsetDateTime": "2025-06-01T17:30:00+10:00"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationStatement",
+        "id": "medstmt-abf57dac",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "386864001",
+              "display": "Epidural anesthesia"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-e81d8af0"
+        },
+        "effectiveDateTime": "2025-08-20T17:30:00+10:00"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationStatement",
+        "id": "medstmt-cd27cdf0",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "372729009",
+              "display": "Penicillin V"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-e81d8af0"
+        },
+        "effectiveDateTime": "2025-08-20T17:30:00+10:00"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Patient",
+        "id": "mother-83756e70",
+        "identifier": [
+          {
+            "system": "urn:sys:mrn",
+            "value": "MRN-CASE02"
+          }
+        ],
+        "name": [
+          {
+            "use": "official",
+            "text": "Scarlett Clark"
+          }
+        ],
+        "gender": "female",
+        "birthDate": "2005-06-09"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Patient",
+        "id": "baby-9b7c4e40",
+        "identifier": [
+          {
+            "system": "urn:sys:nbn",
+            "value": "NBN-CASE02"
+          }
+        ],
+        "name": [
+          {
+            "use": "official",
+            "text": "James "
+          }
+        ],
+        "gender": "male",
+        "birthDate": "2025-08-18",
+        "link": [
+          {
+            "other": {
+              "reference": "Patient/mother-83756e70"
+            },
+            "type": "seealso"
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "enc-1f24c32c",
+        "status": "finished",
+        "class": {
+          "code": "IMP",
+          "display": "inpatient encounter"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "183460006",
+                "display": "Labor and delivery"
+              }
+            ]
+          }
+        ],
+        "subject": {
+          "reference": "Patient/mother-83756e70"
+        },
+        "period": {
+          "start": "2025-08-17T07:30:00+10:00",
+          "end": "2025-08-18T02:30:00+10:00"
+        },
+        "identifier": [
+          {
+            "system": "urn:sys:encounter",
+            "value": "CASE02-L&D"
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "proc-2a53479b",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "code": "165347006",
+              "system": "http://snomed.info/sct",
+              "display": "Assisted vaginal delivery (forceps)"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-83756e70"
+        },
+        "performedDateTime": "2025-08-18T00:30:00+10:00",
+        "encounter": {
+          "reference": "Encounter/enc-1f24c32c"
+        }
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "obs-b5119fca",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "18185-9",
+              "display": "Gestational age"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-83756e70"
+        },
+        "effectiveDateTime": "2025-08-18T00:30:00+10:00",
+        "valueQuantity": {
+          "value": 37.142857142857146,
+          "unit": "weeks",
+          "system": "http://unitsofmeasure.org",
+          "code": "wk"
+        }
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "obs-8f0b8715",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "85354-9",
+              "display": "Blood pressure panel"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-83756e70"
+        },
+        "effectiveDateTime": "2025-08-17T23:30:00+10:00",
+        "component": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8480-6",
+                  "display": "Systolic blood pressure"
+                }
+              ]
+            },
+            "valueQuantity": {
+              "value": 128,
+              "unit": "mmHg"
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8462-4",
+                  "display": "Diastolic blood pressure"
+                }
+              ]
+            },
+            "valueQuantity": {
+              "value": 57,
+              "unit": "mmHg"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "obs-49579203",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "56033-7",
+              "display": "Fetal heart rate"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-83756e70"
+        },
+        "effectiveDateTime": "2025-08-17T22:30:00+10:00",
+        "valueQuantity": {
+          "value": 156,
+          "unit": "beats/min"
+        }
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "obs-d74a78fc",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "11449-6",
+              "display": "History of pregnancies Narrative"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-83756e70"
+        },
+        "effectiveDateTime": "2025-08-17T00:30:00+10:00",
+        "valueString": "G4P2. Previous obstetric history: GBS positive in prior pregnancy."
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Condition",
+        "id": "cond-d9e7870b",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "19894004",
+              "display": "Asthma"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-83756e70"
+        },
+        "onsetDateTime": "2025-04-14T00:30:00+10:00"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Condition",
+        "id": "cond-2ed032e7",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "11687002",
+              "display": "Gestational diabetes mellitus"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-83756e70"
+        },
+        "onsetDateTime": "2025-06-29T00:30:00+10:00"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationStatement",
+        "id": "medstmt-d2dbf9aa",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "372729009",
+              "display": "Ampicillin"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-83756e70"
+        },
+        "effectiveDateTime": "2025-08-18T00:30:00+10:00"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationStatement",
+        "id": "medstmt-2d94fd0a",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "372756006",
+              "display": "Insulin"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-83756e70"
+        },
+        "effectiveDateTime": "2025-08-18T00:30:00+10:00"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Patient",
+        "id": "mother-e0b21d1a",
+        "identifier": [
+          {
+            "system": "urn:sys:mrn",
+            "value": "MRN-CASE03"
+          }
+        ],
+        "name": [
+          {
+            "use": "official",
+            "text": "Grace Baker"
+          }
+        ],
+        "gender": "female",
+        "birthDate": "1998-09-05"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Patient",
+        "id": "baby-b94ab6ec",
+        "identifier": [
+          {
+            "system": "urn:sys:nbn",
+            "value": "NBN-CASE03"
+          }
+        ],
+        "name": [
+          {
+            "use": "official",
+            "text": "William "
+          }
+        ],
+        "gender": "male",
+        "birthDate": "2025-07-31",
+        "link": [
+          {
+            "other": {
+              "reference": "Patient/mother-e0b21d1a"
+            },
+            "type": "seealso"
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "enc-0bc8cc23",
+        "status": "finished",
+        "class": {
+          "code": "IMP",
+          "display": "inpatient encounter"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "183460006",
+                "display": "Labor and delivery"
+              }
+            ]
+          }
+        ],
+        "subject": {
+          "reference": "Patient/mother-e0b21d1a"
+        },
+        "period": {
+          "start": "2025-07-30T07:30:00+10:00",
+          "end": "2025-07-31T03:30:00+10:00"
+        },
+        "identifier": [
+          {
+            "system": "urn:sys:encounter",
+            "value": "CASE03-L&D"
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "proc-0ff4c87e",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "code": "165347006",
+              "system": "http://snomed.info/sct",
+              "display": "Assisted vaginal delivery (forceps)"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-e0b21d1a"
+        },
+        "performedDateTime": "2025-07-31T01:30:00+10:00",
+        "encounter": {
+          "reference": "Encounter/enc-0bc8cc23"
+        }
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "obs-b38d4984",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "18185-9",
+              "display": "Gestational age"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-e0b21d1a"
+        },
+        "effectiveDateTime": "2025-07-31T01:30:00+10:00",
+        "valueQuantity": {
+          "value": 40.142857142857146,
+          "unit": "weeks",
+          "system": "http://unitsofmeasure.org",
+          "code": "wk"
+        }
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "obs-f39d96c9",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "85354-9",
+              "display": "Blood pressure panel"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-e0b21d1a"
+        },
+        "effectiveDateTime": "2025-07-31T00:30:00+10:00",
+        "component": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8480-6",
+                  "display": "Systolic blood pressure"
+                }
+              ]
+            },
+            "valueQuantity": {
+              "value": 153,
+              "unit": "mmHg"
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8462-4",
+                  "display": "Diastolic blood pressure"
+                }
+              ]
+            },
+            "valueQuantity": {
+              "value": 95,
+              "unit": "mmHg"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "obs-b1e5437e",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "56033-7",
+              "display": "Fetal heart rate"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-e0b21d1a"
+        },
+        "effectiveDateTime": "2025-07-30T23:30:00+10:00",
+        "valueQuantity": {
+          "value": 163,
+          "unit": "beats/min"
+        }
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "obs-edbbaa1c",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "11449-6",
+              "display": "History of pregnancies Narrative"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-e0b21d1a"
+        },
+        "effectiveDateTime": "2025-07-30T01:30:00+10:00",
+        "valueString": "G1P0. Previous obstetric history: Preterm birth at 35w (2021)."
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Condition",
+        "id": "cond-c9dad946",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "398254007",
+              "display": "Preeclampsia"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-e0b21d1a"
+        },
+        "onsetDateTime": "2025-04-02T01:30:00+10:00"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Condition",
+        "id": "cond-10b40538",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "95899008",
+              "display": "Group B Streptococcus colonization"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-e0b21d1a"
+        },
+        "onsetDateTime": "2025-05-09T01:30:00+10:00"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationStatement",
+        "id": "medstmt-eeaafc94",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "372756006",
+              "display": "Insulin"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-e0b21d1a"
+        },
+        "effectiveDateTime": "2025-07-31T01:30:00+10:00"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Patient",
+        "id": "mother-bac0c4f3",
+        "identifier": [
+          {
+            "system": "urn:sys:mrn",
+            "value": "MRN-CASE04"
+          }
+        ],
+        "name": [
+          {
+            "use": "official",
+            "text": "Mia Green"
+          }
+        ],
+        "gender": "female",
+        "birthDate": "1982-05-02"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Patient",
+        "id": "baby-360eb084",
+        "identifier": [
+          {
+            "system": "urn:sys:nbn",
+            "value": "NBN-CASE04"
+          }
+        ],
+        "name": [
+          {
+            "use": "official",
+            "text": "Alexander "
+          }
+        ],
+        "gender": "female",
+        "birthDate": "2025-07-25",
+        "link": [
+          {
+            "other": {
+              "reference": "Patient/mother-bac0c4f3"
+            },
+            "type": "seealso"
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "enc-ff9f2b33",
+        "status": "finished",
+        "class": {
+          "code": "IMP",
+          "display": "inpatient encounter"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "183460006",
+                "display": "Labor and delivery"
+              }
+            ]
+          }
+        ],
+        "subject": {
+          "reference": "Patient/mother-bac0c4f3"
+        },
+        "period": {
+          "start": "2025-07-24T11:30:00+10:00",
+          "end": "2025-07-25T19:30:00+10:00"
+        },
+        "identifier": [
+          {
+            "system": "urn:sys:encounter",
+            "value": "CASE04-L&D"
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "proc-27ac864d",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "code": "700430004",
+              "system": "http://snomed.info/sct",
+              "display": "Spontaneous vaginal delivery"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-bac0c4f3"
+        },
+        "performedDateTime": "2025-07-25T17:30:00+10:00",
+        "encounter": {
+          "reference": "Encounter/enc-ff9f2b33"
+        }
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "obs-b301e6ff",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "18185-9",
+              "display": "Gestational age"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-bac0c4f3"
+        },
+        "effectiveDateTime": "2025-07-25T17:30:00+10:00",
+        "valueQuantity": {
+          "value": 38.285714285714285,
+          "unit": "weeks",
+          "system": "http://unitsofmeasure.org",
+          "code": "wk"
+        }
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "obs-f6f8097e",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "85354-9",
+              "display": "Blood pressure panel"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-bac0c4f3"
+        },
+        "effectiveDateTime": "2025-07-25T16:30:00+10:00",
+        "component": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8480-6",
+                  "display": "Systolic blood pressure"
+                }
+              ]
+            },
+            "valueQuantity": {
+              "value": 124,
+              "unit": "mmHg"
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8462-4",
+                  "display": "Diastolic blood pressure"
+                }
+              ]
+            },
+            "valueQuantity": {
+              "value": 57,
+              "unit": "mmHg"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "obs-1c1e6a32",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "56033-7",
+              "display": "Fetal heart rate"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-bac0c4f3"
+        },
+        "effectiveDateTime": "2025-07-25T15:30:00+10:00",
+        "valueQuantity": {
+          "value": 161,
+          "unit": "beats/min"
+        }
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "obs-33a953a4",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "11449-6",
+              "display": "History of pregnancies Narrative"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-bac0c4f3"
+        },
+        "effectiveDateTime": "2025-07-24T17:30:00+10:00",
+        "valueString": "G2P1. Previous obstetric history: GBS positive in prior pregnancy."
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Condition",
+        "id": "cond-498b0a3f",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "422587007",
+              "display": "Hypothyroidism"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-bac0c4f3"
+        },
+        "onsetDateTime": "2025-06-09T17:30:00+10:00"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Condition",
+        "id": "cond-338cbb13",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "95899008",
+              "display": "Group B Streptococcus colonization"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-bac0c4f3"
+        },
+        "onsetDateTime": "2025-05-02T17:30:00+10:00"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationStatement",
+        "id": "medstmt-c1bf5c9c",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "386864001",
+              "display": "Epidural anesthesia"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-bac0c4f3"
+        },
+        "effectiveDateTime": "2025-07-25T17:30:00+10:00"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationStatement",
+        "id": "medstmt-965fc6b3",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "372729009",
+              "display": "Penicillin V"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-bac0c4f3"
+        },
+        "effectiveDateTime": "2025-07-25T17:30:00+10:00"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Patient",
+        "id": "mother-198acb33",
+        "identifier": [
+          {
+            "system": "urn:sys:mrn",
+            "value": "MRN-CASE05"
+          }
+        ],
+        "name": [
+          {
+            "use": "official",
+            "text": "Ella King"
+          }
+        ],
+        "gender": "female",
+        "birthDate": "2001-04-17"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Patient",
+        "id": "baby-36320e8c",
+        "identifier": [
+          {
+            "system": "urn:sys:nbn",
+            "value": "NBN-CASE05"
+          }
+        ],
+        "name": [
+          {
+            "use": "official",
+            "text": "Grace "
+          }
+        ],
+        "gender": "female",
+        "birthDate": "2025-08-07",
+        "link": [
+          {
+            "other": {
+              "reference": "Patient/mother-198acb33"
+            },
+            "type": "seealso"
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "enc-10081e05",
+        "status": "finished",
+        "class": {
+          "code": "IMP",
+          "display": "inpatient encounter"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "183460006",
+                "display": "Labor and delivery"
+              }
+            ]
+          }
+        ],
+        "subject": {
+          "reference": "Patient/mother-198acb33"
+        },
+        "period": {
+          "start": "2025-08-06T08:30:00+10:00",
+          "end": "2025-08-07T04:30:00+10:00"
+        },
+        "identifier": [
+          {
+            "system": "urn:sys:encounter",
+            "value": "CASE05-L&D"
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "proc-222635af",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "code": "165347006",
+              "system": "http://snomed.info/sct",
+              "display": "Assisted vaginal delivery (forceps)"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-198acb33"
+        },
+        "performedDateTime": "2025-08-07T02:30:00+10:00",
+        "encounter": {
+          "reference": "Encounter/enc-10081e05"
+        }
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "obs-8e4044d4",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "18185-9",
+              "display": "Gestational age"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-198acb33"
+        },
+        "effectiveDateTime": "2025-08-07T02:30:00+10:00",
+        "valueQuantity": {
+          "value": 40.57142857142857,
+          "unit": "weeks",
+          "system": "http://unitsofmeasure.org",
+          "code": "wk"
+        }
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "obs-03b53902",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "85354-9",
+              "display": "Blood pressure panel"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-198acb33"
+        },
+        "effectiveDateTime": "2025-08-07T01:30:00+10:00",
+        "component": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8480-6",
+                  "display": "Systolic blood pressure"
+                }
+              ]
+            },
+            "valueQuantity": {
+              "value": 123,
+              "unit": "mmHg"
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8462-4",
+                  "display": "Diastolic blood pressure"
+                }
+              ]
+            },
+            "valueQuantity": {
+              "value": 63,
+              "unit": "mmHg"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "obs-4efc0bbc",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "56033-7",
+              "display": "Fetal heart rate"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-198acb33"
+        },
+        "effectiveDateTime": "2025-08-07T00:30:00+10:00",
+        "valueQuantity": {
+          "value": 142,
+          "unit": "beats/min"
+        }
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "obs-4dc7ff07",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "11449-6",
+              "display": "History of pregnancies Narrative"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-198acb33"
+        },
+        "effectiveDateTime": "2025-08-06T02:30:00+10:00",
+        "valueString": "G2P0. Previous obstetric history: Previous cesarean (2019)."
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Condition",
+        "id": "cond-2aac0f77",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "11687002",
+              "display": "Gestational diabetes mellitus"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-198acb33"
+        },
+        "onsetDateTime": "2025-06-10T02:30:00+10:00"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Condition",
+        "id": "cond-5bb8eee8",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "162864005",
+              "display": "No significant medical problems"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-198acb33"
+        },
+        "onsetDateTime": "2025-05-30T02:30:00+10:00"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationStatement",
+        "id": "medstmt-3d83476c",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "372756006",
+              "display": "Insulin"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-198acb33"
+        },
+        "effectiveDateTime": "2025-08-07T02:30:00+10:00"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationStatement",
+        "id": "medstmt-d312f443",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387544009",
+              "display": "Oxytocin"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-198acb33"
+        },
+        "effectiveDateTime": "2025-08-07T02:30:00+10:00"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Patient",
+        "id": "mother-f990a513",
+        "identifier": [
+          {
+            "system": "urn:sys:mrn",
+            "value": "MRN-CASE06"
+          }
+        ],
+        "name": [
+          {
+            "use": "official",
+            "text": "Ella Allen"
+          }
+        ],
+        "gender": "female",
+        "birthDate": "1986-01-07"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Patient",
+        "id": "baby-aa8a4067",
+        "identifier": [
+          {
+            "system": "urn:sys:nbn",
+            "value": "NBN-CASE06"
+          }
+        ],
+        "name": [
+          {
+            "use": "official",
+            "text": "James "
+          }
+        ],
+        "gender": "female",
+        "birthDate": "2025-07-25",
+        "link": [
+          {
+            "other": {
+              "reference": "Patient/mother-f990a513"
+            },
+            "type": "seealso"
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "enc-ca1f40a8",
+        "status": "finished",
+        "class": {
+          "code": "IMP",
+          "display": "inpatient encounter"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "183460006",
+                "display": "Labor and delivery"
+              }
+            ]
+          }
+        ],
+        "subject": {
+          "reference": "Patient/mother-f990a513"
+        },
+        "period": {
+          "start": "2025-07-24T18:30:00+10:00",
+          "end": "2025-07-25T12:30:00+10:00"
+        },
+        "identifier": [
+          {
+            "system": "urn:sys:encounter",
+            "value": "CASE06-L&D"
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "proc-d0a05c19",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "code": "700430004",
+              "system": "http://snomed.info/sct",
+              "display": "Spontaneous vaginal delivery"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-f990a513"
+        },
+        "performedDateTime": "2025-07-25T10:30:00+10:00",
+        "encounter": {
+          "reference": "Encounter/enc-ca1f40a8"
+        }
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "obs-aef5a404",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "18185-9",
+              "display": "Gestational age"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-f990a513"
+        },
+        "effectiveDateTime": "2025-07-25T10:30:00+10:00",
+        "valueQuantity": {
+          "value": 39.857142857142854,
+          "unit": "weeks",
+          "system": "http://unitsofmeasure.org",
+          "code": "wk"
+        }
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "obs-4c0eb089",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "85354-9",
+              "display": "Blood pressure panel"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-f990a513"
+        },
+        "effectiveDateTime": "2025-07-25T09:30:00+10:00",
+        "component": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8480-6",
+                  "display": "Systolic blood pressure"
+                }
+              ]
+            },
+            "valueQuantity": {
+              "value": 132,
+              "unit": "mmHg"
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8462-4",
+                  "display": "Diastolic blood pressure"
+                }
+              ]
+            },
+            "valueQuantity": {
+              "value": 82,
+              "unit": "mmHg"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "obs-90695667",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "56033-7",
+              "display": "Fetal heart rate"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-f990a513"
+        },
+        "effectiveDateTime": "2025-07-25T08:30:00+10:00",
+        "valueQuantity": {
+          "value": 120,
+          "unit": "beats/min"
+        }
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "obs-c52b9dbf",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "11449-6",
+              "display": "History of pregnancies Narrative"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-f990a513"
+        },
+        "effectiveDateTime": "2025-07-24T10:30:00+10:00",
+        "valueString": "G5P2. Previous obstetric history: GBS positive in prior pregnancy."
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Condition",
+        "id": "cond-82f4677f",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "11687002",
+              "display": "Gestational diabetes mellitus"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-f990a513"
+        },
+        "onsetDateTime": "2025-02-17T10:30:00+10:00"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Condition",
+        "id": "cond-3b8bd1a2",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "95899008",
+              "display": "Group B Streptococcus colonization"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-f990a513"
+        },
+        "onsetDateTime": "2025-05-11T10:30:00+10:00"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationStatement",
+        "id": "medstmt-dabc38b1",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "372729009",
+              "display": "Ampicillin"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-f990a513"
+        },
+        "effectiveDateTime": "2025-07-25T10:30:00+10:00"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Patient",
+        "id": "mother-af21e840",
+        "identifier": [
+          {
+            "system": "urn:sys:mrn",
+            "value": "MRN-CASE07"
+          }
+        ],
+        "name": [
+          {
+            "use": "official",
+            "text": "Evelyn Scott"
+          }
+        ],
+        "gender": "female",
+        "birthDate": "1986-05-25"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Patient",
+        "id": "baby-0b5a0a27",
+        "identifier": [
+          {
+            "system": "urn:sys:nbn",
+            "value": "NBN-CASE07"
+          }
+        ],
+        "name": [
+          {
+            "use": "official",
+            "text": "Noah "
+          }
+        ],
+        "gender": "female",
+        "birthDate": "2025-08-06",
+        "link": [
+          {
+            "other": {
+              "reference": "Patient/mother-af21e840"
+            },
+            "type": "seealso"
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "enc-077b060b",
+        "status": "finished",
+        "class": {
+          "code": "IMP",
+          "display": "inpatient encounter"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "183460006",
+                "display": "Labor and delivery"
+              }
+            ]
+          }
+        ],
+        "subject": {
+          "reference": "Patient/mother-af21e840"
+        },
+        "period": {
+          "start": "2025-08-06T09:30:00+10:00",
+          "end": "2025-08-06T20:30:00+10:00"
+        },
+        "identifier": [
+          {
+            "system": "urn:sys:encounter",
+            "value": "CASE07-L&D"
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "proc-9dad9247",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "code": "165347006",
+              "system": "http://snomed.info/sct",
+              "display": "Assisted vaginal delivery (forceps)"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-af21e840"
+        },
+        "performedDateTime": "2025-08-06T18:30:00+10:00",
+        "encounter": {
+          "reference": "Encounter/enc-077b060b"
+        }
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "obs-2f102c12",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "18185-9",
+              "display": "Gestational age"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-af21e840"
+        },
+        "effectiveDateTime": "2025-08-06T18:30:00+10:00",
+        "valueQuantity": {
+          "value": 41.142857142857146,
+          "unit": "weeks",
+          "system": "http://unitsofmeasure.org",
+          "code": "wk"
+        }
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "obs-bc5f6d43",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "85354-9",
+              "display": "Blood pressure panel"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-af21e840"
+        },
+        "effectiveDateTime": "2025-08-06T17:30:00+10:00",
+        "component": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8480-6",
+                  "display": "Systolic blood pressure"
+                }
+              ]
+            },
+            "valueQuantity": {
+              "value": 134,
+              "unit": "mmHg"
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8462-4",
+                  "display": "Diastolic blood pressure"
+                }
+              ]
+            },
+            "valueQuantity": {
+              "value": 70,
+              "unit": "mmHg"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "obs-c7e39f01",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "56033-7",
+              "display": "Fetal heart rate"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-af21e840"
+        },
+        "effectiveDateTime": "2025-08-06T16:30:00+10:00",
+        "valueQuantity": {
+          "value": 113,
+          "unit": "beats/min"
+        }
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "obs-b4ca4b55",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "11449-6",
+              "display": "History of pregnancies Narrative"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-af21e840"
+        },
+        "effectiveDateTime": "2025-08-05T18:30:00+10:00",
+        "valueString": "G2P1. Previous obstetric history: Uncomplicated term delivery."
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Condition",
+        "id": "cond-b3d0a3df",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "19894004",
+              "display": "Asthma"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-af21e840"
+        },
+        "onsetDateTime": "2025-06-17T18:30:00+10:00"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationStatement",
+        "id": "medstmt-1f35e748",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387544009",
+              "display": "Oxytocin"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-af21e840"
+        },
+        "effectiveDateTime": "2025-08-06T18:30:00+10:00"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationStatement",
+        "id": "medstmt-7478e895",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "372756006",
+              "display": "Insulin"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-af21e840"
+        },
+        "effectiveDateTime": "2025-08-06T18:30:00+10:00"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Patient",
+        "id": "mother-397ab21b",
+        "identifier": [
+          {
+            "system": "urn:sys:mrn",
+            "value": "MRN-CASE08"
+          }
+        ],
+        "name": [
+          {
+            "use": "official",
+            "text": "Isabella Anderson"
+          }
+        ],
+        "gender": "female",
+        "birthDate": "1984-01-04"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Patient",
+        "id": "baby-e70125d9",
+        "identifier": [
+          {
+            "system": "urn:sys:nbn",
+            "value": "NBN-CASE08"
+          }
+        ],
+        "name": [
+          {
+            "use": "official",
+            "text": "Henry "
+          }
+        ],
+        "gender": "male",
+        "birthDate": "2025-07-27",
+        "link": [
+          {
+            "other": {
+              "reference": "Patient/mother-397ab21b"
+            },
+            "type": "seealso"
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "enc-cee02266",
+        "status": "finished",
+        "class": {
+          "code": "IMP",
+          "display": "inpatient encounter"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "183460006",
+                "display": "Labor and delivery"
+              }
+            ]
+          }
+        ],
+        "subject": {
+          "reference": "Patient/mother-397ab21b"
+        },
+        "period": {
+          "start": "2025-07-27T03:30:00+10:00",
+          "end": "2025-07-27T23:30:00+10:00"
+        },
+        "identifier": [
+          {
+            "system": "urn:sys:encounter",
+            "value": "CASE08-L&D"
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "proc-b936b16e",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "code": "165347006",
+              "system": "http://snomed.info/sct",
+              "display": "Assisted vaginal delivery (forceps)"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-397ab21b"
+        },
+        "performedDateTime": "2025-07-27T21:30:00+10:00",
+        "encounter": {
+          "reference": "Encounter/enc-cee02266"
+        }
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "obs-bfe85b92",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "18185-9",
+              "display": "Gestational age"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-397ab21b"
+        },
+        "effectiveDateTime": "2025-07-27T21:30:00+10:00",
+        "valueQuantity": {
+          "value": 37.57142857142857,
+          "unit": "weeks",
+          "system": "http://unitsofmeasure.org",
+          "code": "wk"
+        }
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "obs-e1a14804",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "85354-9",
+              "display": "Blood pressure panel"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-397ab21b"
+        },
+        "effectiveDateTime": "2025-07-27T20:30:00+10:00",
+        "component": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8480-6",
+                  "display": "Systolic blood pressure"
+                }
+              ]
+            },
+            "valueQuantity": {
+              "value": 151,
+              "unit": "mmHg"
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8462-4",
+                  "display": "Diastolic blood pressure"
+                }
+              ]
+            },
+            "valueQuantity": {
+              "value": 88,
+              "unit": "mmHg"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "obs-ef1008bb",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "56033-7",
+              "display": "Fetal heart rate"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-397ab21b"
+        },
+        "effectiveDateTime": "2025-07-27T19:30:00+10:00",
+        "valueQuantity": {
+          "value": 138,
+          "unit": "beats/min"
+        }
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "obs-daaecf60",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "11449-6",
+              "display": "History of pregnancies Narrative"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-397ab21b"
+        },
+        "effectiveDateTime": "2025-07-26T21:30:00+10:00",
+        "valueString": "G5P1. Previous obstetric history: Uncomplicated term delivery."
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Condition",
+        "id": "cond-79a3fce2",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "398254007",
+              "display": "Preeclampsia"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-397ab21b"
+        },
+        "onsetDateTime": "2025-05-01T21:30:00+10:00"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationStatement",
+        "id": "medstmt-4beb799c",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387544009",
+              "display": "Oxytocin"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-397ab21b"
+        },
+        "effectiveDateTime": "2025-07-27T21:30:00+10:00"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationStatement",
+        "id": "medstmt-0e39c62e",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "372756006",
+              "display": "Insulin"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-397ab21b"
+        },
+        "effectiveDateTime": "2025-07-27T21:30:00+10:00"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Patient",
+        "id": "mother-05f5e42c",
+        "identifier": [
+          {
+            "system": "urn:sys:mrn",
+            "value": "MRN-CASE09"
+          }
+        ],
+        "name": [
+          {
+            "use": "official",
+            "text": "Aria White"
+          }
+        ],
+        "gender": "female",
+        "birthDate": "1987-05-14"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Patient",
+        "id": "baby-ee9abec3",
+        "identifier": [
+          {
+            "system": "urn:sys:nbn",
+            "value": "NBN-CASE09"
+          }
+        ],
+        "name": [
+          {
+            "use": "official",
+            "text": "William "
+          }
+        ],
+        "gender": "male",
+        "birthDate": "2025-08-23",
+        "link": [
+          {
+            "other": {
+              "reference": "Patient/mother-05f5e42c"
+            },
+            "type": "seealso"
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "enc-544f5269",
+        "status": "finished",
+        "class": {
+          "code": "IMP",
+          "display": "inpatient encounter"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "183460006",
+                "display": "Labor and delivery"
+              }
+            ]
+          }
+        ],
+        "subject": {
+          "reference": "Patient/mother-05f5e42c"
+        },
+        "period": {
+          "start": "2025-08-22T19:30:00+10:00",
+          "end": "2025-08-23T05:30:00+10:00"
+        },
+        "identifier": [
+          {
+            "system": "urn:sys:encounter",
+            "value": "CASE09-L&D"
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "proc-a5d421aa",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "code": "11466000",
+              "system": "http://snomed.info/sct",
+              "display": "Cesarean section"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-05f5e42c"
+        },
+        "performedDateTime": "2025-08-23T03:30:00+10:00",
+        "encounter": {
+          "reference": "Encounter/enc-544f5269"
+        }
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "obs-2738edba",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "18185-9",
+              "display": "Gestational age"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-05f5e42c"
+        },
+        "effectiveDateTime": "2025-08-23T03:30:00+10:00",
+        "valueQuantity": {
+          "value": 40.714285714285715,
+          "unit": "weeks",
+          "system": "http://unitsofmeasure.org",
+          "code": "wk"
+        }
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "obs-bc15c317",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "85354-9",
+              "display": "Blood pressure panel"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-05f5e42c"
+        },
+        "effectiveDateTime": "2025-08-23T02:30:00+10:00",
+        "component": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8480-6",
+                  "display": "Systolic blood pressure"
+                }
+              ]
+            },
+            "valueQuantity": {
+              "value": 130,
+              "unit": "mmHg"
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8462-4",
+                  "display": "Diastolic blood pressure"
+                }
+              ]
+            },
+            "valueQuantity": {
+              "value": 97,
+              "unit": "mmHg"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "obs-91cece2b",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "56033-7",
+              "display": "Fetal heart rate"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-05f5e42c"
+        },
+        "effectiveDateTime": "2025-08-23T01:30:00+10:00",
+        "valueQuantity": {
+          "value": 141,
+          "unit": "beats/min"
+        }
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "obs-8131f1d5",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "11449-6",
+              "display": "History of pregnancies Narrative"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-05f5e42c"
+        },
+        "effectiveDateTime": "2025-08-22T03:30:00+10:00",
+        "valueString": "G1P0. Previous obstetric history: GBS positive in prior pregnancy."
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Condition",
+        "id": "cond-90404cd7",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "19894004",
+              "display": "Asthma"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-05f5e42c"
+        },
+        "onsetDateTime": "2025-06-21T03:30:00+10:00"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationStatement",
+        "id": "medstmt-a00121d8",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "386864001",
+              "display": "Epidural anesthesia"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-05f5e42c"
+        },
+        "effectiveDateTime": "2025-08-23T03:30:00+10:00"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationStatement",
+        "id": "medstmt-e988c0ba",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "372729009",
+              "display": "Penicillin V"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-05f5e42c"
+        },
+        "effectiveDateTime": "2025-08-23T03:30:00+10:00"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Patient",
+        "id": "mother-78e86e12",
+        "identifier": [
+          {
+            "system": "urn:sys:mrn",
+            "value": "MRN-CASE10"
+          }
+        ],
+        "name": [
+          {
+            "use": "official",
+            "text": "Zoe Thompson"
+          }
+        ],
+        "gender": "female",
+        "birthDate": "2002-07-12"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Patient",
+        "id": "baby-64ea70fb",
+        "identifier": [
+          {
+            "system": "urn:sys:nbn",
+            "value": "NBN-CASE10"
+          }
+        ],
+        "name": [
+          {
+            "use": "official",
+            "text": "James "
+          }
+        ],
+        "gender": "male",
+        "birthDate": "2025-08-10",
+        "link": [
+          {
+            "other": {
+              "reference": "Patient/mother-78e86e12"
+            },
+            "type": "seealso"
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "enc-09f0644f",
+        "status": "finished",
+        "class": {
+          "code": "IMP",
+          "display": "inpatient encounter"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "183460006",
+                "display": "Labor and delivery"
+              }
+            ]
+          }
+        ],
+        "subject": {
+          "reference": "Patient/mother-78e86e12"
+        },
+        "period": {
+          "start": "2025-08-09T17:30:00+10:00",
+          "end": "2025-08-10T11:30:00+10:00"
+        },
+        "identifier": [
+          {
+            "system": "urn:sys:encounter",
+            "value": "CASE10-L&D"
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "proc-ca3c745f",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "code": "700430004",
+              "system": "http://snomed.info/sct",
+              "display": "Spontaneous vaginal delivery"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-78e86e12"
+        },
+        "performedDateTime": "2025-08-10T09:30:00+10:00",
+        "encounter": {
+          "reference": "Encounter/enc-09f0644f"
+        }
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "obs-b82e9255",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "18185-9",
+              "display": "Gestational age"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-78e86e12"
+        },
+        "effectiveDateTime": "2025-08-10T09:30:00+10:00",
+        "valueQuantity": {
+          "value": 38.42857142857143,
+          "unit": "weeks",
+          "system": "http://unitsofmeasure.org",
+          "code": "wk"
+        }
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "obs-2a2066fc",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "85354-9",
+              "display": "Blood pressure panel"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-78e86e12"
+        },
+        "effectiveDateTime": "2025-08-10T08:30:00+10:00",
+        "component": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8480-6",
+                  "display": "Systolic blood pressure"
+                }
+              ]
+            },
+            "valueQuantity": {
+              "value": 126,
+              "unit": "mmHg"
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8462-4",
+                  "display": "Diastolic blood pressure"
+                }
+              ]
+            },
+            "valueQuantity": {
+              "value": 67,
+              "unit": "mmHg"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "obs-378deac3",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "56033-7",
+              "display": "Fetal heart rate"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-78e86e12"
+        },
+        "effectiveDateTime": "2025-08-10T07:30:00+10:00",
+        "valueQuantity": {
+          "value": 122,
+          "unit": "beats/min"
+        }
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "obs-082992cd",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "11449-6",
+              "display": "History of pregnancies Narrative"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-78e86e12"
+        },
+        "effectiveDateTime": "2025-08-09T09:30:00+10:00",
+        "valueString": "G4P2. Previous obstetric history: Gestational hypertension (2022)."
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Condition",
+        "id": "cond-98abf2fb",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "398254007",
+              "display": "Preeclampsia"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-78e86e12"
+        },
+        "onsetDateTime": "2025-05-26T09:30:00+10:00"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Condition",
+        "id": "cond-8861d676",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "422587007",
+              "display": "Hypothyroidism"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-78e86e12"
+        },
+        "onsetDateTime": "2025-05-01T09:30:00+10:00"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationStatement",
+        "id": "medstmt-abfab42f",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387544009",
+              "display": "Oxytocin"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-78e86e12"
+        },
+        "effectiveDateTime": "2025-08-10T09:30:00+10:00"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Patient",
+        "id": "mother-c1a4e558",
+        "identifier": [
+          {
+            "system": "urn:sys:mrn",
+            "value": "MRN-CASE11"
+          }
+        ],
+        "name": [
+          {
+            "use": "official",
+            "text": "Chloe Green"
+          }
+        ],
+        "gender": "female",
+        "birthDate": "2002-08-05"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Patient",
+        "id": "baby-5e7ed07a",
+        "identifier": [
+          {
+            "system": "urn:sys:nbn",
+            "value": "NBN-CASE11"
+          }
+        ],
+        "name": [
+          {
+            "use": "official",
+            "text": "Lucas "
+          }
+        ],
+        "gender": "female",
+        "birthDate": "2025-07-28",
+        "link": [
+          {
+            "other": {
+              "reference": "Patient/mother-c1a4e558"
+            },
+            "type": "seealso"
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "enc-d3eb40b5",
+        "status": "finished",
+        "class": {
+          "code": "IMP",
+          "display": "inpatient encounter"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "183460006",
+                "display": "Labor and delivery"
+              }
+            ]
+          }
+        ],
+        "subject": {
+          "reference": "Patient/mother-c1a4e558"
+        },
+        "period": {
+          "start": "2025-07-27T15:30:00+10:00",
+          "end": "2025-07-28T05:30:00+10:00"
+        },
+        "identifier": [
+          {
+            "system": "urn:sys:encounter",
+            "value": "CASE11-L&D"
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "proc-74d8a889",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "code": "165349009",
+              "system": "http://snomed.info/sct",
+              "display": "Assisted vaginal delivery (vacuum)"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-c1a4e558"
+        },
+        "performedDateTime": "2025-07-28T03:30:00+10:00",
+        "encounter": {
+          "reference": "Encounter/enc-d3eb40b5"
+        }
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "obs-3b2e3293",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "18185-9",
+              "display": "Gestational age"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-c1a4e558"
+        },
+        "effectiveDateTime": "2025-07-28T03:30:00+10:00",
+        "valueQuantity": {
+          "value": 35.857142857142854,
+          "unit": "weeks",
+          "system": "http://unitsofmeasure.org",
+          "code": "wk"
+        }
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "obs-51981eca",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "85354-9",
+              "display": "Blood pressure panel"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-c1a4e558"
+        },
+        "effectiveDateTime": "2025-07-28T02:30:00+10:00",
+        "component": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8480-6",
+                  "display": "Systolic blood pressure"
+                }
+              ]
+            },
+            "valueQuantity": {
+              "value": 102,
+              "unit": "mmHg"
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8462-4",
+                  "display": "Diastolic blood pressure"
+                }
+              ]
+            },
+            "valueQuantity": {
+              "value": 65,
+              "unit": "mmHg"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "obs-bec55386",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "56033-7",
+              "display": "Fetal heart rate"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-c1a4e558"
+        },
+        "effectiveDateTime": "2025-07-28T01:30:00+10:00",
+        "valueQuantity": {
+          "value": 134,
+          "unit": "beats/min"
+        }
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "obs-26fd097b",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "11449-6",
+              "display": "History of pregnancies Narrative"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-c1a4e558"
+        },
+        "effectiveDateTime": "2025-07-27T03:30:00+10:00",
+        "valueString": "G5P0. Previous obstetric history: Gestational hypertension (2022)."
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Condition",
+        "id": "cond-a4cd579c",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "422587007",
+              "display": "Hypothyroidism"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-c1a4e558"
+        },
+        "onsetDateTime": "2025-04-22T03:30:00+10:00"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationStatement",
+        "id": "medstmt-13c79af0",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "372729009",
+              "display": "Penicillin V"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-c1a4e558"
+        },
+        "effectiveDateTime": "2025-07-28T03:30:00+10:00"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationStatement",
+        "id": "medstmt-439fe94e",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "372756006",
+              "display": "Insulin"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-c1a4e558"
+        },
+        "effectiveDateTime": "2025-07-28T03:30:00+10:00"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Patient",
+        "id": "mother-4a78eb90",
+        "identifier": [
+          {
+            "system": "urn:sys:mrn",
+            "value": "MRN-CASE12"
+          }
+        ],
+        "name": [
+          {
+            "use": "official",
+            "text": "Emily Anderson"
+          }
+        ],
+        "gender": "female",
+        "birthDate": "1999-04-02"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Patient",
+        "id": "baby-f74f2b7b",
+        "identifier": [
+          {
+            "system": "urn:sys:nbn",
+            "value": "NBN-CASE12"
+          }
+        ],
+        "name": [
+          {
+            "use": "official",
+            "text": "Ava "
+          }
+        ],
+        "gender": "male",
+        "birthDate": "2025-08-07",
+        "link": [
+          {
+            "other": {
+              "reference": "Patient/mother-4a78eb90"
+            },
+            "type": "seealso"
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "enc-a975e3b1",
+        "status": "finished",
+        "class": {
+          "code": "IMP",
+          "display": "inpatient encounter"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "183460006",
+                "display": "Labor and delivery"
+              }
+            ]
+          }
+        ],
+        "subject": {
+          "reference": "Patient/mother-4a78eb90"
+        },
+        "period": {
+          "start": "2025-08-06T12:30:00+10:00",
+          "end": "2025-08-07T11:30:00+10:00"
+        },
+        "identifier": [
+          {
+            "system": "urn:sys:encounter",
+            "value": "CASE12-L&D"
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "proc-481742e0",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "code": "11466000",
+              "system": "http://snomed.info/sct",
+              "display": "Cesarean section"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-4a78eb90"
+        },
+        "performedDateTime": "2025-08-07T09:30:00+10:00",
+        "encounter": {
+          "reference": "Encounter/enc-a975e3b1"
+        }
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "obs-6eb8f248",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "18185-9",
+              "display": "Gestational age"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-4a78eb90"
+        },
+        "effectiveDateTime": "2025-08-07T09:30:00+10:00",
+        "valueQuantity": {
+          "value": 39.714285714285715,
+          "unit": "weeks",
+          "system": "http://unitsofmeasure.org",
+          "code": "wk"
+        }
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "obs-e15d579f",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "85354-9",
+              "display": "Blood pressure panel"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-4a78eb90"
+        },
+        "effectiveDateTime": "2025-08-07T08:30:00+10:00",
+        "component": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8480-6",
+                  "display": "Systolic blood pressure"
+                }
+              ]
+            },
+            "valueQuantity": {
+              "value": 102,
+              "unit": "mmHg"
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8462-4",
+                  "display": "Diastolic blood pressure"
+                }
+              ]
+            },
+            "valueQuantity": {
+              "value": 87,
+              "unit": "mmHg"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "obs-f7dd5d75",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "56033-7",
+              "display": "Fetal heart rate"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-4a78eb90"
+        },
+        "effectiveDateTime": "2025-08-07T07:30:00+10:00",
+        "valueQuantity": {
+          "value": 115,
+          "unit": "beats/min"
+        }
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "obs-58ad68c4",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "11449-6",
+              "display": "History of pregnancies Narrative"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-4a78eb90"
+        },
+        "effectiveDateTime": "2025-08-06T09:30:00+10:00",
+        "valueString": "G2P0. Previous obstetric history: Previous cesarean (2019)."
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Condition",
+        "id": "cond-ba74db1c",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "11687002",
+              "display": "Gestational diabetes mellitus"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-4a78eb90"
+        },
+        "onsetDateTime": "2025-06-21T09:30:00+10:00"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationStatement",
+        "id": "medstmt-8ccf07ef",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387544009",
+              "display": "Oxytocin"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-4a78eb90"
+        },
+        "effectiveDateTime": "2025-08-07T09:30:00+10:00"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationStatement",
+        "id": "medstmt-329fa5b6",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "372756006",
+              "display": "Insulin"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-4a78eb90"
+        },
+        "effectiveDateTime": "2025-08-07T09:30:00+10:00"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Patient",
+        "id": "mother-3994d966",
+        "identifier": [
+          {
+            "system": "urn:sys:mrn",
+            "value": "MRN-CASE13"
+          }
+        ],
+        "name": [
+          {
+            "use": "official",
+            "text": "Amelia Baker"
+          }
+        ],
+        "gender": "female",
+        "birthDate": "1986-08-14"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Patient",
+        "id": "baby-0a8646f0",
+        "identifier": [
+          {
+            "system": "urn:sys:nbn",
+            "value": "NBN-CASE13"
+          }
+        ],
+        "name": [
+          {
+            "use": "official",
+            "text": "Chloe "
+          }
+        ],
+        "gender": "female",
+        "birthDate": "2025-08-05",
+        "link": [
+          {
+            "other": {
+              "reference": "Patient/mother-3994d966"
+            },
+            "type": "seealso"
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "enc-46d915d5",
+        "status": "finished",
+        "class": {
+          "code": "IMP",
+          "display": "inpatient encounter"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "183460006",
+                "display": "Labor and delivery"
+              }
+            ]
+          }
+        ],
+        "subject": {
+          "reference": "Patient/mother-3994d966"
+        },
+        "period": {
+          "start": "2025-08-05T04:30:00+10:00",
+          "end": "2025-08-05T18:30:00+10:00"
+        },
+        "identifier": [
+          {
+            "system": "urn:sys:encounter",
+            "value": "CASE13-L&D"
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "proc-d46d343d",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "code": "165347006",
+              "system": "http://snomed.info/sct",
+              "display": "Assisted vaginal delivery (forceps)"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-3994d966"
+        },
+        "performedDateTime": "2025-08-05T16:30:00+10:00",
+        "encounter": {
+          "reference": "Encounter/enc-46d915d5"
+        }
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "obs-d94d95ec",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "18185-9",
+              "display": "Gestational age"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-3994d966"
+        },
+        "effectiveDateTime": "2025-08-05T16:30:00+10:00",
+        "valueQuantity": {
+          "value": 38.714285714285715,
+          "unit": "weeks",
+          "system": "http://unitsofmeasure.org",
+          "code": "wk"
+        }
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "obs-4abb5d3e",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "85354-9",
+              "display": "Blood pressure panel"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-3994d966"
+        },
+        "effectiveDateTime": "2025-08-05T15:30:00+10:00",
+        "component": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8480-6",
+                  "display": "Systolic blood pressure"
+                }
+              ]
+            },
+            "valueQuantity": {
+              "value": 125,
+              "unit": "mmHg"
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8462-4",
+                  "display": "Diastolic blood pressure"
+                }
+              ]
+            },
+            "valueQuantity": {
+              "value": 71,
+              "unit": "mmHg"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "obs-d01c89ee",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "56033-7",
+              "display": "Fetal heart rate"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-3994d966"
+        },
+        "effectiveDateTime": "2025-08-05T14:30:00+10:00",
+        "valueQuantity": {
+          "value": 135,
+          "unit": "beats/min"
+        }
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "obs-df510f14",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "11449-6",
+              "display": "History of pregnancies Narrative"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-3994d966"
+        },
+        "effectiveDateTime": "2025-08-04T16:30:00+10:00",
+        "valueString": "G5P0. Previous obstetric history: Gestational hypertension (2022)."
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Condition",
+        "id": "cond-d8000abd",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "162864005",
+              "display": "No significant medical problems"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-3994d966"
+        },
+        "onsetDateTime": "2025-04-21T16:30:00+10:00"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationStatement",
+        "id": "medstmt-d57b406e",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387544009",
+              "display": "Oxytocin"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-3994d966"
+        },
+        "effectiveDateTime": "2025-08-05T16:30:00+10:00"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationStatement",
+        "id": "medstmt-7eb8667f",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "372729009",
+              "display": "Ampicillin"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-3994d966"
+        },
+        "effectiveDateTime": "2025-08-05T16:30:00+10:00"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Patient",
+        "id": "mother-a36376aa",
+        "identifier": [
+          {
+            "system": "urn:sys:mrn",
+            "value": "MRN-CASE14"
+          }
+        ],
+        "name": [
+          {
+            "use": "official",
+            "text": "Chloe Adams"
+          }
+        ],
+        "gender": "female",
+        "birthDate": "1987-07-14"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Patient",
+        "id": "baby-a021c01d",
+        "identifier": [
+          {
+            "system": "urn:sys:nbn",
+            "value": "NBN-CASE14"
+          }
+        ],
+        "name": [
+          {
+            "use": "official",
+            "text": "William "
+          }
+        ],
+        "gender": "male",
+        "birthDate": "2025-08-19",
+        "link": [
+          {
+            "other": {
+              "reference": "Patient/mother-a36376aa"
+            },
+            "type": "seealso"
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "enc-87f4f166",
+        "status": "finished",
+        "class": {
+          "code": "IMP",
+          "display": "inpatient encounter"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "183460006",
+                "display": "Labor and delivery"
+              }
+            ]
+          }
+        ],
+        "subject": {
+          "reference": "Patient/mother-a36376aa"
+        },
+        "period": {
+          "start": "2025-08-19T12:30:00+10:00",
+          "end": "2025-08-20T01:30:00+10:00"
+        },
+        "identifier": [
+          {
+            "system": "urn:sys:encounter",
+            "value": "CASE14-L&D"
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "proc-ca69935b",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "code": "165349009",
+              "system": "http://snomed.info/sct",
+              "display": "Assisted vaginal delivery (vacuum)"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-a36376aa"
+        },
+        "performedDateTime": "2025-08-19T23:30:00+10:00",
+        "encounter": {
+          "reference": "Encounter/enc-87f4f166"
+        }
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "obs-ddc90f17",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "18185-9",
+              "display": "Gestational age"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-a36376aa"
+        },
+        "effectiveDateTime": "2025-08-19T23:30:00+10:00",
+        "valueQuantity": {
+          "value": 39.285714285714285,
+          "unit": "weeks",
+          "system": "http://unitsofmeasure.org",
+          "code": "wk"
+        }
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "obs-a5b232bc",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "85354-9",
+              "display": "Blood pressure panel"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-a36376aa"
+        },
+        "effectiveDateTime": "2025-08-19T22:30:00+10:00",
+        "component": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8480-6",
+                  "display": "Systolic blood pressure"
+                }
+              ]
+            },
+            "valueQuantity": {
+              "value": 133,
+              "unit": "mmHg"
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8462-4",
+                  "display": "Diastolic blood pressure"
+                }
+              ]
+            },
+            "valueQuantity": {
+              "value": 94,
+              "unit": "mmHg"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "obs-3d0bce91",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "56033-7",
+              "display": "Fetal heart rate"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-a36376aa"
+        },
+        "effectiveDateTime": "2025-08-19T21:30:00+10:00",
+        "valueQuantity": {
+          "value": 161,
+          "unit": "beats/min"
+        }
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "obs-8ff56c4b",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "11449-6",
+              "display": "History of pregnancies Narrative"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-a36376aa"
+        },
+        "effectiveDateTime": "2025-08-18T23:30:00+10:00",
+        "valueString": "G1P0. Previous obstetric history: Preterm birth at 35w (2021)."
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Condition",
+        "id": "cond-402471c0",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "162864005",
+              "display": "No significant medical problems"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-a36376aa"
+        },
+        "onsetDateTime": "2025-03-01T23:30:00+10:00"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationStatement",
+        "id": "medstmt-3859c0ad",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "386864001",
+              "display": "Epidural anesthesia"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-a36376aa"
+        },
+        "effectiveDateTime": "2025-08-19T23:30:00+10:00"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Patient",
+        "id": "mother-26c40668",
+        "identifier": [
+          {
+            "system": "urn:sys:mrn",
+            "value": "MRN-CASE15"
+          }
+        ],
+        "name": [
+          {
+            "use": "official",
+            "text": "Harper Taylor"
+          }
+        ],
+        "gender": "female",
+        "birthDate": "2001-11-20"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Patient",
+        "id": "baby-ffa5eaaf",
+        "identifier": [
+          {
+            "system": "urn:sys:nbn",
+            "value": "NBN-CASE15"
+          }
+        ],
+        "name": [
+          {
+            "use": "official",
+            "text": "Henry "
+          }
+        ],
+        "gender": "female",
+        "birthDate": "2025-08-18",
+        "link": [
+          {
+            "other": {
+              "reference": "Patient/mother-26c40668"
+            },
+            "type": "seealso"
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "enc-4d5de6f2",
+        "status": "finished",
+        "class": {
+          "code": "IMP",
+          "display": "inpatient encounter"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "183460006",
+                "display": "Labor and delivery"
+              }
+            ]
+          }
+        ],
+        "subject": {
+          "reference": "Patient/mother-26c40668"
+        },
+        "period": {
+          "start": "2025-08-17T10:30:00+10:00",
+          "end": "2025-08-18T02:30:00+10:00"
+        },
+        "identifier": [
+          {
+            "system": "urn:sys:encounter",
+            "value": "CASE15-L&D"
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "proc-04aa7111",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "code": "700430004",
+              "system": "http://snomed.info/sct",
+              "display": "Spontaneous vaginal delivery"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-26c40668"
+        },
+        "performedDateTime": "2025-08-18T00:30:00+10:00",
+        "encounter": {
+          "reference": "Encounter/enc-4d5de6f2"
+        }
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "obs-a02df046",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "18185-9",
+              "display": "Gestational age"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-26c40668"
+        },
+        "effectiveDateTime": "2025-08-18T00:30:00+10:00",
+        "valueQuantity": {
+          "value": 37.57142857142857,
+          "unit": "weeks",
+          "system": "http://unitsofmeasure.org",
+          "code": "wk"
+        }
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "obs-6a347e76",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "85354-9",
+              "display": "Blood pressure panel"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-26c40668"
+        },
+        "effectiveDateTime": "2025-08-17T23:30:00+10:00",
+        "component": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8480-6",
+                  "display": "Systolic blood pressure"
+                }
+              ]
+            },
+            "valueQuantity": {
+              "value": 106,
+              "unit": "mmHg"
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8462-4",
+                  "display": "Diastolic blood pressure"
+                }
+              ]
+            },
+            "valueQuantity": {
+              "value": 95,
+              "unit": "mmHg"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "obs-d6a838f8",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "56033-7",
+              "display": "Fetal heart rate"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-26c40668"
+        },
+        "effectiveDateTime": "2025-08-17T22:30:00+10:00",
+        "valueQuantity": {
+          "value": 137,
+          "unit": "beats/min"
+        }
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "obs-fe9d04af",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "11449-6",
+              "display": "History of pregnancies Narrative"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-26c40668"
+        },
+        "effectiveDateTime": "2025-08-17T00:30:00+10:00",
+        "valueString": "G2P1. Previous obstetric history: Preterm birth at 35w (2021)."
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Condition",
+        "id": "cond-0b7b5c5a",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "11687002",
+              "display": "Gestational diabetes mellitus"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-26c40668"
+        },
+        "onsetDateTime": "2025-04-25T00:30:00+10:00"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Condition",
+        "id": "cond-9cc9d245",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "162864005",
+              "display": "No significant medical problems"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-26c40668"
+        },
+        "onsetDateTime": "2025-06-16T00:30:00+10:00"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationStatement",
+        "id": "medstmt-cb9df7bf",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "372729009",
+              "display": "Ampicillin"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-26c40668"
+        },
+        "effectiveDateTime": "2025-08-18T00:30:00+10:00"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Patient",
+        "id": "mother-6b20b725",
+        "identifier": [
+          {
+            "system": "urn:sys:mrn",
+            "value": "MRN-CASE16"
+          }
+        ],
+        "name": [
+          {
+            "use": "official",
+            "text": "Chloe Green"
+          }
+        ],
+        "gender": "female",
+        "birthDate": "1983-01-29"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Patient",
+        "id": "baby-73e36de1",
+        "identifier": [
+          {
+            "system": "urn:sys:nbn",
+            "value": "NBN-CASE16"
+          }
+        ],
+        "name": [
+          {
+            "use": "official",
+            "text": "Sophie "
+          }
+        ],
+        "gender": "male",
+        "birthDate": "2025-07-25",
+        "link": [
+          {
+            "other": {
+              "reference": "Patient/mother-6b20b725"
+            },
+            "type": "seealso"
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "enc-90b37015",
+        "status": "finished",
+        "class": {
+          "code": "IMP",
+          "display": "inpatient encounter"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "183460006",
+                "display": "Labor and delivery"
+              }
+            ]
+          }
+        ],
+        "subject": {
+          "reference": "Patient/mother-6b20b725"
+        },
+        "period": {
+          "start": "2025-07-24T06:30:00+10:00",
+          "end": "2025-07-25T08:30:00+10:00"
+        },
+        "identifier": [
+          {
+            "system": "urn:sys:encounter",
+            "value": "CASE16-L&D"
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "proc-287ba449",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "code": "11466000",
+              "system": "http://snomed.info/sct",
+              "display": "Cesarean section"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-6b20b725"
+        },
+        "performedDateTime": "2025-07-25T06:30:00+10:00",
+        "encounter": {
+          "reference": "Encounter/enc-90b37015"
+        }
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "obs-121290e4",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "18185-9",
+              "display": "Gestational age"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-6b20b725"
+        },
+        "effectiveDateTime": "2025-07-25T06:30:00+10:00",
+        "valueQuantity": {
+          "value": 35.0,
+          "unit": "weeks",
+          "system": "http://unitsofmeasure.org",
+          "code": "wk"
+        }
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "obs-572fac10",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "85354-9",
+              "display": "Blood pressure panel"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-6b20b725"
+        },
+        "effectiveDateTime": "2025-07-25T05:30:00+10:00",
+        "component": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8480-6",
+                  "display": "Systolic blood pressure"
+                }
+              ]
+            },
+            "valueQuantity": {
+              "value": 150,
+              "unit": "mmHg"
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8462-4",
+                  "display": "Diastolic blood pressure"
+                }
+              ]
+            },
+            "valueQuantity": {
+              "value": 63,
+              "unit": "mmHg"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "obs-b88d81a9",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "56033-7",
+              "display": "Fetal heart rate"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-6b20b725"
+        },
+        "effectiveDateTime": "2025-07-25T04:30:00+10:00",
+        "valueQuantity": {
+          "value": 112,
+          "unit": "beats/min"
+        }
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "obs-86014f29",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "11449-6",
+              "display": "History of pregnancies Narrative"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-6b20b725"
+        },
+        "effectiveDateTime": "2025-07-24T06:30:00+10:00",
+        "valueString": "G5P0. Previous obstetric history: Previous cesarean (2019)."
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Condition",
+        "id": "cond-c002e5e4",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "95899008",
+              "display": "Group B Streptococcus colonization"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-6b20b725"
+        },
+        "onsetDateTime": "2025-03-26T06:30:00+10:00"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Condition",
+        "id": "cond-bcb93c3d",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "11687002",
+              "display": "Gestational diabetes mellitus"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-6b20b725"
+        },
+        "onsetDateTime": "2025-05-03T06:30:00+10:00"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationStatement",
+        "id": "medstmt-7d4c6fbe",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "372729009",
+              "display": "Penicillin V"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-6b20b725"
+        },
+        "effectiveDateTime": "2025-07-25T06:30:00+10:00"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Patient",
+        "id": "mother-411f7b55",
+        "identifier": [
+          {
+            "system": "urn:sys:mrn",
+            "value": "MRN-CASE17"
+          }
+        ],
+        "name": [
+          {
+            "use": "official",
+            "text": "Aria Young"
+          }
+        ],
+        "gender": "female",
+        "birthDate": "1986-06-16"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Patient",
+        "id": "baby-65e82990",
+        "identifier": [
+          {
+            "system": "urn:sys:nbn",
+            "value": "NBN-CASE17"
+          }
+        ],
+        "name": [
+          {
+            "use": "official",
+            "text": "Noah "
+          }
+        ],
+        "gender": "male",
+        "birthDate": "2025-08-18",
+        "link": [
+          {
+            "other": {
+              "reference": "Patient/mother-411f7b55"
+            },
+            "type": "seealso"
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "enc-806d9ee8",
+        "status": "finished",
+        "class": {
+          "code": "IMP",
+          "display": "inpatient encounter"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "183460006",
+                "display": "Labor and delivery"
+              }
+            ]
+          }
+        ],
+        "subject": {
+          "reference": "Patient/mother-411f7b55"
+        },
+        "period": {
+          "start": "2025-08-18T05:30:00+10:00",
+          "end": "2025-08-18T23:30:00+10:00"
+        },
+        "identifier": [
+          {
+            "system": "urn:sys:encounter",
+            "value": "CASE17-L&D"
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "proc-833df20b",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "code": "165349009",
+              "system": "http://snomed.info/sct",
+              "display": "Assisted vaginal delivery (vacuum)"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-411f7b55"
+        },
+        "performedDateTime": "2025-08-18T21:30:00+10:00",
+        "encounter": {
+          "reference": "Encounter/enc-806d9ee8"
+        }
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "obs-2af49436",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "18185-9",
+              "display": "Gestational age"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-411f7b55"
+        },
+        "effectiveDateTime": "2025-08-18T21:30:00+10:00",
+        "valueQuantity": {
+          "value": 41.857142857142854,
+          "unit": "weeks",
+          "system": "http://unitsofmeasure.org",
+          "code": "wk"
+        }
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "obs-1b39ad74",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "85354-9",
+              "display": "Blood pressure panel"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-411f7b55"
+        },
+        "effectiveDateTime": "2025-08-18T20:30:00+10:00",
+        "component": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8480-6",
+                  "display": "Systolic blood pressure"
+                }
+              ]
+            },
+            "valueQuantity": {
+              "value": 126,
+              "unit": "mmHg"
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8462-4",
+                  "display": "Diastolic blood pressure"
+                }
+              ]
+            },
+            "valueQuantity": {
+              "value": 72,
+              "unit": "mmHg"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "obs-c305d5f2",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "56033-7",
+              "display": "Fetal heart rate"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-411f7b55"
+        },
+        "effectiveDateTime": "2025-08-18T19:30:00+10:00",
+        "valueQuantity": {
+          "value": 120,
+          "unit": "beats/min"
+        }
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "obs-fa9985ec",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "11449-6",
+              "display": "History of pregnancies Narrative"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-411f7b55"
+        },
+        "effectiveDateTime": "2025-08-17T21:30:00+10:00",
+        "valueString": "G2P0. Previous obstetric history: Gestational hypertension (2022)."
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Condition",
+        "id": "cond-9340a9fc",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "422587007",
+              "display": "Hypothyroidism"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-411f7b55"
+        },
+        "onsetDateTime": "2025-07-10T21:30:00+10:00"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationStatement",
+        "id": "medstmt-b405d187",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "386864001",
+              "display": "Epidural anesthesia"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-411f7b55"
+        },
+        "effectiveDateTime": "2025-08-18T21:30:00+10:00"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Patient",
+        "id": "mother-8978ce09",
+        "identifier": [
+          {
+            "system": "urn:sys:mrn",
+            "value": "MRN-CASE18"
+          }
+        ],
+        "name": [
+          {
+            "use": "official",
+            "text": "Chloe Hall"
+          }
+        ],
+        "gender": "female",
+        "birthDate": "1996-05-07"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Patient",
+        "id": "baby-4bf531bb",
+        "identifier": [
+          {
+            "system": "urn:sys:nbn",
+            "value": "NBN-CASE18"
+          }
+        ],
+        "name": [
+          {
+            "use": "official",
+            "text": "Oliver "
+          }
+        ],
+        "gender": "male",
+        "birthDate": "2025-08-12",
+        "link": [
+          {
+            "other": {
+              "reference": "Patient/mother-8978ce09"
+            },
+            "type": "seealso"
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "enc-4121031b",
+        "status": "finished",
+        "class": {
+          "code": "IMP",
+          "display": "inpatient encounter"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "183460006",
+                "display": "Labor and delivery"
+              }
+            ]
+          }
+        ],
+        "subject": {
+          "reference": "Patient/mother-8978ce09"
+        },
+        "period": {
+          "start": "2025-08-11T10:30:00+10:00",
+          "end": "2025-08-12T02:30:00+10:00"
+        },
+        "identifier": [
+          {
+            "system": "urn:sys:encounter",
+            "value": "CASE18-L&D"
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "proc-1fdc8cd4",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "code": "165347006",
+              "system": "http://snomed.info/sct",
+              "display": "Assisted vaginal delivery (forceps)"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-8978ce09"
+        },
+        "performedDateTime": "2025-08-12T00:30:00+10:00",
+        "encounter": {
+          "reference": "Encounter/enc-4121031b"
+        }
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "obs-a52a27fd",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "18185-9",
+              "display": "Gestational age"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-8978ce09"
+        },
+        "effectiveDateTime": "2025-08-12T00:30:00+10:00",
+        "valueQuantity": {
+          "value": 40.142857142857146,
+          "unit": "weeks",
+          "system": "http://unitsofmeasure.org",
+          "code": "wk"
+        }
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "obs-a4b76fef",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "85354-9",
+              "display": "Blood pressure panel"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-8978ce09"
+        },
+        "effectiveDateTime": "2025-08-11T23:30:00+10:00",
+        "component": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8480-6",
+                  "display": "Systolic blood pressure"
+                }
+              ]
+            },
+            "valueQuantity": {
+              "value": 160,
+              "unit": "mmHg"
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8462-4",
+                  "display": "Diastolic blood pressure"
+                }
+              ]
+            },
+            "valueQuantity": {
+              "value": 80,
+              "unit": "mmHg"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "obs-f04e02ce",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "56033-7",
+              "display": "Fetal heart rate"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-8978ce09"
+        },
+        "effectiveDateTime": "2025-08-11T22:30:00+10:00",
+        "valueQuantity": {
+          "value": 153,
+          "unit": "beats/min"
+        }
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "obs-7a7512a0",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "11449-6",
+              "display": "History of pregnancies Narrative"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-8978ce09"
+        },
+        "effectiveDateTime": "2025-08-11T00:30:00+10:00",
+        "valueString": "G2P0. Previous obstetric history: GBS positive in prior pregnancy."
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Condition",
+        "id": "cond-51747ee1",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "11687002",
+              "display": "Gestational diabetes mellitus"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-8978ce09"
+        },
+        "onsetDateTime": "2025-05-08T00:30:00+10:00"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Condition",
+        "id": "cond-e97caf4e",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "162864005",
+              "display": "No significant medical problems"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-8978ce09"
+        },
+        "onsetDateTime": "2025-05-29T00:30:00+10:00"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationStatement",
+        "id": "medstmt-4400b60b",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387544009",
+              "display": "Oxytocin"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-8978ce09"
+        },
+        "effectiveDateTime": "2025-08-12T00:30:00+10:00"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationStatement",
+        "id": "medstmt-4eaf3549",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "372729009",
+              "display": "Ampicillin"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-8978ce09"
+        },
+        "effectiveDateTime": "2025-08-12T00:30:00+10:00"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Patient",
+        "id": "mother-7f379f98",
+        "identifier": [
+          {
+            "system": "urn:sys:mrn",
+            "value": "MRN-CASE19"
+          }
+        ],
+        "name": [
+          {
+            "use": "official",
+            "text": "Victoria Young"
+          }
+        ],
+        "gender": "female",
+        "birthDate": "1994-03-25"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Patient",
+        "id": "baby-8fa10f34",
+        "identifier": [
+          {
+            "system": "urn:sys:nbn",
+            "value": "NBN-CASE19"
+          }
+        ],
+        "name": [
+          {
+            "use": "official",
+            "text": "Liam "
+          }
+        ],
+        "gender": "female",
+        "birthDate": "2025-08-18",
+        "link": [
+          {
+            "other": {
+              "reference": "Patient/mother-7f379f98"
+            },
+            "type": "seealso"
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "enc-731704aa",
+        "status": "finished",
+        "class": {
+          "code": "IMP",
+          "display": "inpatient encounter"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "183460006",
+                "display": "Labor and delivery"
+              }
+            ]
+          }
+        ],
+        "subject": {
+          "reference": "Patient/mother-7f379f98"
+        },
+        "period": {
+          "start": "2025-08-16T15:30:00+10:00",
+          "end": "2025-08-18T04:30:00+10:00"
+        },
+        "identifier": [
+          {
+            "system": "urn:sys:encounter",
+            "value": "CASE19-L&D"
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "proc-d2176fbc",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "code": "11466000",
+              "system": "http://snomed.info/sct",
+              "display": "Cesarean section"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-7f379f98"
+        },
+        "performedDateTime": "2025-08-18T02:30:00+10:00",
+        "encounter": {
+          "reference": "Encounter/enc-731704aa"
+        }
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "obs-45f2400c",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "18185-9",
+              "display": "Gestational age"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-7f379f98"
+        },
+        "effectiveDateTime": "2025-08-18T02:30:00+10:00",
+        "valueQuantity": {
+          "value": 38.57142857142857,
+          "unit": "weeks",
+          "system": "http://unitsofmeasure.org",
+          "code": "wk"
+        }
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "obs-406b01b3",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "85354-9",
+              "display": "Blood pressure panel"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-7f379f98"
+        },
+        "effectiveDateTime": "2025-08-18T01:30:00+10:00",
+        "component": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8480-6",
+                  "display": "Systolic blood pressure"
+                }
+              ]
+            },
+            "valueQuantity": {
+              "value": 141,
+              "unit": "mmHg"
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8462-4",
+                  "display": "Diastolic blood pressure"
+                }
+              ]
+            },
+            "valueQuantity": {
+              "value": 82,
+              "unit": "mmHg"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "obs-5ea82ae1",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "56033-7",
+              "display": "Fetal heart rate"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-7f379f98"
+        },
+        "effectiveDateTime": "2025-08-18T00:30:00+10:00",
+        "valueQuantity": {
+          "value": 114,
+          "unit": "beats/min"
+        }
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "obs-2c1c264f",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "11449-6",
+              "display": "History of pregnancies Narrative"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-7f379f98"
+        },
+        "effectiveDateTime": "2025-08-17T02:30:00+10:00",
+        "valueString": "G4P0. Previous obstetric history: GBS positive in prior pregnancy."
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Condition",
+        "id": "cond-ca3a903b",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "19894004",
+              "display": "Asthma"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-7f379f98"
+        },
+        "onsetDateTime": "2025-06-18T02:30:00+10:00"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Condition",
+        "id": "cond-f4861251",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "95899008",
+              "display": "Group B Streptococcus colonization"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-7f379f98"
+        },
+        "onsetDateTime": "2025-05-04T02:30:00+10:00"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationStatement",
+        "id": "medstmt-c60c255c",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "372729009",
+              "display": "Ampicillin"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-7f379f98"
+        },
+        "effectiveDateTime": "2025-08-18T02:30:00+10:00"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationStatement",
+        "id": "medstmt-402a2d66",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "372729009",
+              "display": "Penicillin V"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-7f379f98"
+        },
+        "effectiveDateTime": "2025-08-18T02:30:00+10:00"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Patient",
+        "id": "mother-c31825a5",
+        "identifier": [
+          {
+            "system": "urn:sys:mrn",
+            "value": "MRN-CASE20"
+          }
+        ],
+        "name": [
+          {
+            "use": "official",
+            "text": "Lily Allen"
+          }
+        ],
+        "gender": "female",
+        "birthDate": "1983-04-06"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Patient",
+        "id": "baby-0a40015d",
+        "identifier": [
+          {
+            "system": "urn:sys:nbn",
+            "value": "NBN-CASE20"
+          }
+        ],
+        "name": [
+          {
+            "use": "official",
+            "text": "Lucas "
+          }
+        ],
+        "gender": "female",
+        "birthDate": "2025-08-02",
+        "link": [
+          {
+            "other": {
+              "reference": "Patient/mother-c31825a5"
+            },
+            "type": "seealso"
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "enc-dda6360c",
+        "status": "finished",
+        "class": {
+          "code": "IMP",
+          "display": "inpatient encounter"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "183460006",
+                "display": "Labor and delivery"
+              }
+            ]
+          }
+        ],
+        "subject": {
+          "reference": "Patient/mother-c31825a5"
+        },
+        "period": {
+          "start": "2025-08-01T14:30:00+10:00",
+          "end": "2025-08-03T00:30:00+10:00"
+        },
+        "identifier": [
+          {
+            "system": "urn:sys:encounter",
+            "value": "CASE20-L&D"
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "proc-da88b737",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "code": "700430004",
+              "system": "http://snomed.info/sct",
+              "display": "Spontaneous vaginal delivery"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-c31825a5"
+        },
+        "performedDateTime": "2025-08-02T22:30:00+10:00",
+        "encounter": {
+          "reference": "Encounter/enc-dda6360c"
+        }
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "obs-98360185",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "18185-9",
+              "display": "Gestational age"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-c31825a5"
+        },
+        "effectiveDateTime": "2025-08-02T22:30:00+10:00",
+        "valueQuantity": {
+          "value": 36.42857142857143,
+          "unit": "weeks",
+          "system": "http://unitsofmeasure.org",
+          "code": "wk"
+        }
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "obs-c2c97894",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "85354-9",
+              "display": "Blood pressure panel"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-c31825a5"
+        },
+        "effectiveDateTime": "2025-08-02T21:30:00+10:00",
+        "component": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8480-6",
+                  "display": "Systolic blood pressure"
+                }
+              ]
+            },
+            "valueQuantity": {
+              "value": 133,
+              "unit": "mmHg"
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8462-4",
+                  "display": "Diastolic blood pressure"
+                }
+              ]
+            },
+            "valueQuantity": {
+              "value": 73,
+              "unit": "mmHg"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "obs-cf4e538e",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "56033-7",
+              "display": "Fetal heart rate"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-c31825a5"
+        },
+        "effectiveDateTime": "2025-08-02T20:30:00+10:00",
+        "valueQuantity": {
+          "value": 123,
+          "unit": "beats/min"
+        }
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "obs-1f433de2",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "11449-6",
+              "display": "History of pregnancies Narrative"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-c31825a5"
+        },
+        "effectiveDateTime": "2025-08-01T22:30:00+10:00",
+        "valueString": "G5P1. Previous obstetric history: Gestational hypertension (2022)."
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Condition",
+        "id": "cond-b1490cf0",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "19894004",
+              "display": "Asthma"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-c31825a5"
+        },
+        "onsetDateTime": "2025-04-12T22:30:00+10:00"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Condition",
+        "id": "cond-047cc210",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "162864005",
+              "display": "No significant medical problems"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-c31825a5"
+        },
+        "onsetDateTime": "2025-03-06T22:30:00+10:00"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationStatement",
+        "id": "medstmt-17853d59",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "372729009",
+              "display": "Ampicillin"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-c31825a5"
+        },
+        "effectiveDateTime": "2025-08-02T22:30:00+10:00"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationStatement",
+        "id": "medstmt-6400180f",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "386864001",
+              "display": "Epidural anesthesia"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/mother-c31825a5"
+        },
+        "effectiveDateTime": "2025-08-02T22:30:00+10:00"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "RelatedPerson",
+        "id": "rel-baby-b2d7c006",
+        "patient": {
+          "reference": "Patient/mother-e81d8af0"
+        },
+        "relationship": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-RoleCode",
+                "code": "CHILD",
+                "display": "Child"
+              }
+            ]
+          }
+        ],
+        "name": [
+          {
+            "use": "official",
+            "text": "William "
+          }
+        ],
+        "gender": "female",
+        "birthDate": "2025-08-20"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "RelatedPerson",
+        "id": "rel-baby-9b7c4e40",
+        "patient": {
+          "reference": "Patient/mother-83756e70"
+        },
+        "relationship": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-RoleCode",
+                "code": "CHILD",
+                "display": "Child"
+              }
+            ]
+          }
+        ],
+        "name": [
+          {
+            "use": "official",
+            "text": "James "
+          }
+        ],
+        "gender": "male",
+        "birthDate": "2025-08-18"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "RelatedPerson",
+        "id": "rel-baby-b94ab6ec",
+        "patient": {
+          "reference": "Patient/mother-e0b21d1a"
+        },
+        "relationship": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-RoleCode",
+                "code": "CHILD",
+                "display": "Child"
+              }
+            ]
+          }
+        ],
+        "name": [
+          {
+            "use": "official",
+            "text": "William "
+          }
+        ],
+        "gender": "male",
+        "birthDate": "2025-07-31"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "RelatedPerson",
+        "id": "rel-baby-360eb084",
+        "patient": {
+          "reference": "Patient/mother-bac0c4f3"
+        },
+        "relationship": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-RoleCode",
+                "code": "CHILD",
+                "display": "Child"
+              }
+            ]
+          }
+        ],
+        "name": [
+          {
+            "use": "official",
+            "text": "Alexander "
+          }
+        ],
+        "gender": "female",
+        "birthDate": "2025-07-25"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "RelatedPerson",
+        "id": "rel-baby-36320e8c",
+        "patient": {
+          "reference": "Patient/mother-198acb33"
+        },
+        "relationship": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-RoleCode",
+                "code": "CHILD",
+                "display": "Child"
+              }
+            ]
+          }
+        ],
+        "name": [
+          {
+            "use": "official",
+            "text": "Grace "
+          }
+        ],
+        "gender": "female",
+        "birthDate": "2025-08-07"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "RelatedPerson",
+        "id": "rel-baby-aa8a4067",
+        "patient": {
+          "reference": "Patient/mother-f990a513"
+        },
+        "relationship": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-RoleCode",
+                "code": "CHILD",
+                "display": "Child"
+              }
+            ]
+          }
+        ],
+        "name": [
+          {
+            "use": "official",
+            "text": "James "
+          }
+        ],
+        "gender": "female",
+        "birthDate": "2025-07-25"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "RelatedPerson",
+        "id": "rel-baby-0b5a0a27",
+        "patient": {
+          "reference": "Patient/mother-af21e840"
+        },
+        "relationship": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-RoleCode",
+                "code": "CHILD",
+                "display": "Child"
+              }
+            ]
+          }
+        ],
+        "name": [
+          {
+            "use": "official",
+            "text": "Noah "
+          }
+        ],
+        "gender": "female",
+        "birthDate": "2025-08-06"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "RelatedPerson",
+        "id": "rel-baby-e70125d9",
+        "patient": {
+          "reference": "Patient/mother-397ab21b"
+        },
+        "relationship": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-RoleCode",
+                "code": "CHILD",
+                "display": "Child"
+              }
+            ]
+          }
+        ],
+        "name": [
+          {
+            "use": "official",
+            "text": "Henry "
+          }
+        ],
+        "gender": "male",
+        "birthDate": "2025-07-27"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "RelatedPerson",
+        "id": "rel-baby-ee9abec3",
+        "patient": {
+          "reference": "Patient/mother-05f5e42c"
+        },
+        "relationship": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-RoleCode",
+                "code": "CHILD",
+                "display": "Child"
+              }
+            ]
+          }
+        ],
+        "name": [
+          {
+            "use": "official",
+            "text": "William "
+          }
+        ],
+        "gender": "male",
+        "birthDate": "2025-08-23"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "RelatedPerson",
+        "id": "rel-baby-64ea70fb",
+        "patient": {
+          "reference": "Patient/mother-78e86e12"
+        },
+        "relationship": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-RoleCode",
+                "code": "CHILD",
+                "display": "Child"
+              }
+            ]
+          }
+        ],
+        "name": [
+          {
+            "use": "official",
+            "text": "James "
+          }
+        ],
+        "gender": "male",
+        "birthDate": "2025-08-10"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "RelatedPerson",
+        "id": "rel-baby-5e7ed07a",
+        "patient": {
+          "reference": "Patient/mother-c1a4e558"
+        },
+        "relationship": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-RoleCode",
+                "code": "CHILD",
+                "display": "Child"
+              }
+            ]
+          }
+        ],
+        "name": [
+          {
+            "use": "official",
+            "text": "Lucas "
+          }
+        ],
+        "gender": "female",
+        "birthDate": "2025-07-28"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "RelatedPerson",
+        "id": "rel-baby-f74f2b7b",
+        "patient": {
+          "reference": "Patient/mother-4a78eb90"
+        },
+        "relationship": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-RoleCode",
+                "code": "CHILD",
+                "display": "Child"
+              }
+            ]
+          }
+        ],
+        "name": [
+          {
+            "use": "official",
+            "text": "Ava "
+          }
+        ],
+        "gender": "male",
+        "birthDate": "2025-08-07"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "RelatedPerson",
+        "id": "rel-baby-0a8646f0",
+        "patient": {
+          "reference": "Patient/mother-3994d966"
+        },
+        "relationship": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-RoleCode",
+                "code": "CHILD",
+                "display": "Child"
+              }
+            ]
+          }
+        ],
+        "name": [
+          {
+            "use": "official",
+            "text": "Chloe "
+          }
+        ],
+        "gender": "female",
+        "birthDate": "2025-08-05"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "RelatedPerson",
+        "id": "rel-baby-a021c01d",
+        "patient": {
+          "reference": "Patient/mother-a36376aa"
+        },
+        "relationship": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-RoleCode",
+                "code": "CHILD",
+                "display": "Child"
+              }
+            ]
+          }
+        ],
+        "name": [
+          {
+            "use": "official",
+            "text": "William "
+          }
+        ],
+        "gender": "male",
+        "birthDate": "2025-08-19"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "RelatedPerson",
+        "id": "rel-baby-ffa5eaaf",
+        "patient": {
+          "reference": "Patient/mother-26c40668"
+        },
+        "relationship": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-RoleCode",
+                "code": "CHILD",
+                "display": "Child"
+              }
+            ]
+          }
+        ],
+        "name": [
+          {
+            "use": "official",
+            "text": "Henry "
+          }
+        ],
+        "gender": "female",
+        "birthDate": "2025-08-18"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "RelatedPerson",
+        "id": "rel-baby-73e36de1",
+        "patient": {
+          "reference": "Patient/mother-6b20b725"
+        },
+        "relationship": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-RoleCode",
+                "code": "CHILD",
+                "display": "Child"
+              }
+            ]
+          }
+        ],
+        "name": [
+          {
+            "use": "official",
+            "text": "Sophie "
+          }
+        ],
+        "gender": "male",
+        "birthDate": "2025-07-25"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "RelatedPerson",
+        "id": "rel-baby-65e82990",
+        "patient": {
+          "reference": "Patient/mother-411f7b55"
+        },
+        "relationship": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-RoleCode",
+                "code": "CHILD",
+                "display": "Child"
+              }
+            ]
+          }
+        ],
+        "name": [
+          {
+            "use": "official",
+            "text": "Noah "
+          }
+        ],
+        "gender": "male",
+        "birthDate": "2025-08-18"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "RelatedPerson",
+        "id": "rel-baby-4bf531bb",
+        "patient": {
+          "reference": "Patient/mother-8978ce09"
+        },
+        "relationship": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-RoleCode",
+                "code": "CHILD",
+                "display": "Child"
+              }
+            ]
+          }
+        ],
+        "name": [
+          {
+            "use": "official",
+            "text": "Oliver "
+          }
+        ],
+        "gender": "male",
+        "birthDate": "2025-08-12"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "RelatedPerson",
+        "id": "rel-baby-8fa10f34",
+        "patient": {
+          "reference": "Patient/mother-7f379f98"
+        },
+        "relationship": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-RoleCode",
+                "code": "CHILD",
+                "display": "Child"
+              }
+            ]
+          }
+        ],
+        "name": [
+          {
+            "use": "official",
+            "text": "Liam "
+          }
+        ],
+        "gender": "female",
+        "birthDate": "2025-08-18"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "RelatedPerson",
+        "id": "rel-baby-0a40015d",
+        "patient": {
+          "reference": "Patient/mother-c31825a5"
+        },
+        "relationship": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-RoleCode",
+                "code": "CHILD",
+                "display": "Child"
+              }
+            ]
+          }
+        ],
+        "name": [
+          {
+            "use": "official",
+            "text": "Lucas "
+          }
+        ],
+        "gender": "female",
+        "birthDate": "2025-08-02"
+      }
+    }
+  ]
+}
+

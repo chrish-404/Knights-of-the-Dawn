@@ -6,10 +6,11 @@ from app import views
 from comp3820 import settings
 
 app_name = 'app'
-urlpatterns =[
+urlpatterns = [
     path('login/', views.login_view, name='login'),
     path('index/', views.index),
     path('patient_list/', views.patient_list),
     path("launch/", views.launch, name="launch"),
     path("callback/", views.fhir_callback, name="fhir_callback"),
+    path('search/', views.search_patients, name='search_patients'),
 ]
