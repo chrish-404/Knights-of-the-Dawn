@@ -31,20 +31,33 @@ def patient_list(request):
         return HttpResponse("No access token found")
 
     iss = request.session.get("iss")
-    fhir_url = request.GET.get("fhir_url")
-    if not fhir_url:
-        fhir_url = token_data.get("patient") or f"{iss.rstrip('/')}/Patient"
-        fhir_url = f"{fhir_url}?_count=10"
+    page = int(request.GET.get("page", 1))
+    count = int(request.GET.get("count", 5))
 
-    response = requests.get(
-        fhir_url,
-        headers={"Authorization": f"Bearer {access_token}"}
-    )
+    offset = (page - 1) * count
+    mc_records = MotherChild.objects.all()[offset:offset + count]
 
+    patient_ids = []
+    for mc in mc_records:
+        if mc.mother_id:
+            patient_ids.append(mc.mother_id)
+        if mc.child_id:
+            patient_ids.append(mc.child_id[4:])
+
+    if not patient_ids:
+        return render(request, "patient-list.html", {"patients": []})
+
+    fhir_url = f"{iss.rstrip('/')}/Patient?_id={','.join(patient_ids)}"
+    # print(fhir_url)
+
+    response = requests.get(fhir_url, headers={"Authorization": f"Bearer {access_token}"})
     patient_data = response.json()
-    entries = patient_data.get("entry", [])
+    # print(patient_data)
 
+    entries = patient_data.get("entry", [])
+    # print(entries)
     patients = []
+
     for e in entries:
         r = e.get("resource", {})
         patients.append({
@@ -52,29 +65,30 @@ def patient_list(request):
             "name": " ".join(r.get("name", [{}])[0].get("given", []) + [r.get("name", [{}])[0].get("family", "")]),
             "gender": r.get("gender"),
             "birthDate": r.get("birthDate"),
-            "phone": next((t.get("value") for t in r.get("telecom", []) if t.get("system") == "phone" and "value" in t), ""),
-            "email": next((t.get("value") for t in r.get("telecom", []) if t.get("system") == "email" and "value" in t), "")
+            "phone": next((t.get("value") for t in r.get("telecom", []) if t.get("system") == "phone"), ""),
+            "email": next((t.get("value") for t in r.get("telecom", []) if t.get("system") == "email"), "")
         })
 
     for p in patients:
-        if p.get("birthDate"):
-            birth_year = int(p["birthDate"][:4])
-            today_year = datetime.utcnow().year
-            p["age"] = today_year - birth_year
+        birth_date_str = p.get("birthDate")
+        if birth_date_str:
+            birth_date = datetime.strptime(birth_date_str, "%Y-%m-%d")
+            today = datetime.utcnow()
+            delta_days = (today - birth_date).days
+
+            if delta_days >= 365:
+                p["age"] = f"{delta_days // 365} years"
+            else:
+                p["age"] = f"{delta_days} days"
         else:
             p["age"] = None
 
-    next_url = prev_url = None
-    for link in patient_data.get("link", []):
-        if link.get("relation") == "next":
-            next_url = link.get("url")
-        elif link.get("relation") == "previous":
-            prev_url = link.get("url")
-
     return render(request, "patient-list.html", {
         "patients": patients,
-        "next_url": next_url,
-        "prev_url": prev_url
+        "page": page,
+        "count": count,
+        "has_next": len(MotherChild.objects.all()) > offset + count,
+        "has_prev": page > 1
     })
 
     # return render(request, "patient-list.html", {"patient": patient_data})
@@ -124,7 +138,6 @@ def fhir_callback(request):
         if not resource or "resourceType" not in resource or "id" not in resource:
             continue
 
-        # 处理 name 字段，保证搜索可用
         if resource.get("name"):
             name_obj = resource["name"][0]
             if "text" in name_obj and ("given" not in name_obj or "family" not in name_obj):
@@ -197,7 +210,7 @@ def fhir_callback(request):
     #         count += 1
     # print(f"Imported {count} mother-child records into database.")
 
-    return redirect("/login/")
+    # return redirect("/login/")
     return redirect("/patient_list/")
 
 
@@ -275,6 +288,7 @@ def search_patients(request):
     query = request.GET.get("q", "")
     if query:
         fhir_url += f"&name={query}"
+        # fhir_url += f"&_id={query}"
 
     headers = {"Authorization": f"Bearer {access_token}"}
     try:
@@ -293,7 +307,7 @@ def search_patients(request):
             'gender': patient.get('gender'),
             'age': calculate_age(patient.get('birthDate')) if patient.get('birthDate') else None
         })
-
+    # print(patients)
     return JsonResponse({'patients': patients})
 
 
