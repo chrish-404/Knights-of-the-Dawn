@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>index</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <style>
+        body {
+            margin: 0 0 0 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            display: flex;
+            gap: 20px;
+        }
+
+        #calendar {
+            flex: 1;
+        }
+
+        #result {
+            flex: 6;
+            border: 1px solid #ccc;
+            padding: 10px;
+            min-height: 300px;
+            background: #f9f9f9;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background: #eee;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div id="calendar"></div>
+    <div id="result">
+        <h3>Patient List</h3>
+        <p>select date</p>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script>
+    flatpickr("#calendar", {
+        inline: true,
+        dateFormat: "Y-m-d",
+        defaultDate: "today",
+        onChange: function (selectedDates, dateStr) {
+            if (!dateStr) return;
+            fetchData(dateStr);
+        },
+        onReady: function (selectedDates, dateStr) {
+            if (dateStr) {
+                fetchData(dateStr);
+            }
+        }
+    });
+
+    function renderTable(data) {
+        let resultDiv = document.getElementById("result");
+        
+        if (!Array.isArray(data) || data.length === 0) {
+            resultDiv.innerHTML = `<h3>Schedule</h3><p>No schedule on this date</p>`;
+            return;
+        }
+        let table = `<h3>Schedule</h3><table><thead><tr>`;
+        table += `<th>Date</th><th>Time</th>`;
+        table += `</tr></thead><tbody>`;
+        
+        data.forEach(item => {
+            table += `<tr>`;
+            table += `<td>${item.date}</td>`;
+            table += `<td>${item.shift}</td>`;
+            table += `</tr>`;
+        });
+
+        table += `</tbody></table>`;
+        resultDiv.innerHTML = table;
+    }
+    
+    function fetchData(dateStr) {
+        fetch(`/search/date/?date=${encodeURIComponent(dateStr)}`)
+            .then(response => {
+                if (!response.ok) throw new Error("Network error");
+                return response.json();
+            })
+            .then(json => {
+                renderTable(json.data);
+            })
+            .catch(error => {
+                document.getElementById("result").innerHTML =
+                    `<h3>Schedule</h3><p>fail：${error}</p>`;
+            });
+    }
+</script>
+</body>
+</html>

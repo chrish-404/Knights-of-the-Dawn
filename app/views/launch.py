@@ -132,6 +132,32 @@ def login_view(request):
         #     'password':'123456',
         # }
         # User.objects.create_user(**data)
+        # nurse1 = User.objects.create_user(
+        #     username="001",
+        #     first_name="Emily",
+        #     last_name="Smith",
+        #     staff_id="MW001",
+        #     role="midwife",
+        #     department="Maternity"
+        # )
+        #
+        # nurse2 = User.objects.create_user(
+        #     username="002",
+        #     first_name="Oliver",
+        #     last_name="Jones",
+        #     staff_id="MW002",
+        #     role="midwife",
+        #     department="Maternity"
+        # )
+        #
+        # nurse3 = User.objects.create_user(
+        #     username="003",
+        #     first_name="Sophia",
+        #     last_name="Brown",
+        #     staff_id="MW003",
+        #     role="midwife",
+        #     department="Maternity"
+        # )
         data = json.loads(request.body)
         form = LoginForm(data)
         if not form.is_valid():
