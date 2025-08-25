@@ -41,10 +41,8 @@ class User(AbstractUser):
 
 class MotherChild(models.Model):
     mother_id = models.CharField(max_length=50)
-    mother_name = models.CharField(max_length=100)
 
     child_id = models.CharField(max_length=50)
-    child_name = models.CharField(max_length=100)
 
     def __str__(self):
         return f"Mother: {self.mother_name} ({self.mother_id}) - Child: {self.child_name} ({self.child_id})"

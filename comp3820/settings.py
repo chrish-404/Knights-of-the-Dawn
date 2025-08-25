@@ -135,3 +135,4 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 FHIR_CLIENT_ID = "f786617d-6070-476c-8cbd-a04596fd97a7"
 FHIR_REDIRECT_URI = "http://localhost:8000/callback/"  # 必须在 Allowed Redirect URIs 中
 FHIR_SCOPE = "openid profile patient/*.read"
+FHIR_ISS_URL="https://launch.smarthealthit.org/v/r4/fhir"

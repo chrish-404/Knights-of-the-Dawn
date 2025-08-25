@@ -30,9 +30,9 @@ def patient_list(request):
     token_data = request.session.get("fhir_token")
     access_token = token_data.get("access_token")
 
-    iss = request.session.get("iss")
-    page = int(request.GET.get("page", 1))
-    count = int(request.GET.get("count", 5))
+    iss = settings.FHIR_ISS_URL
+    page = int(request.GET.get("p", 1))
+    count = int(request.GET.get("c", 5))
 
     offset = (page - 1) * count
     records = MotherChild.objects.all()[offset:offset + count]
@@ -90,7 +90,7 @@ def patient_list(request):
 def search_patients(request):
     token_data = request.session.get("fhir_token")
     access_token = token_data.get("access_token")
-    fhir_url = request.session.get("iss").rstrip('/')+"/Patient"
+    fhir_url = settings.FHIR_ISS_URL.rstrip('/')+"/Patient"
 
     if "?" in fhir_url:
         fhir_url += "&_count=10"

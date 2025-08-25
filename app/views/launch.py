@@ -7,7 +7,6 @@ from datetime import datetime, date
 
 import requests
 
-
 from django.contrib.auth import authenticate, login
 import json
 
@@ -20,9 +19,10 @@ from app.forms import LoginForm
 from app.models import User, MotherChild
 from comp3820 import settings
 
+
 def fhir_callback(request):
     code = request.GET.get("code")
-    iss = request.session.get("iss")
+    iss = settings.FHIR_ISS_URL
     code_verifier = request.session.get("code_verifier")
 
     config_url = iss.rstrip('/') + "/.well-known/smart-configuration"
@@ -90,54 +90,26 @@ def fhir_callback(request):
     #         mother_ref = resource["patient"]["reference"]
     #         mother_id = mother_ref.split("/")[1]
     #
-    #         if resource.get("name"):
-    #             name_obj = resource["name"][0]
-    #             if "text" in name_obj:
-    #                 mother_name = name_obj["text"]
-    #                 child_name = name_obj["text"]
-    #             else:
-    #                 given = name_obj.get("given", [])
-    #                 family = name_obj.get("family", "")
-    #                 full_name = " ".join(given + [family]).strip()
-    #                 if full_name:
-    #                     mother_name = full_name
-    #                     child_name = full_name
-    #                 else:
-    #                     mother_name = "(No name)"
-    #                     child_name = "(No name)"
-    #         else:
-    #             mother_name = "(No name)"
-    #             child_name = "(No name)"
-    #
     #         child_id = resource.get("id", f"child-{mother_id}")
     #
     #         obj, created = MotherChild.objects.get_or_create(
     #             mother_id=mother_id,
-    #             child_id=child_id,
-    #             defaults={
-    #                 "mother_name": mother_name,
-    #                 "child_name": child_name,
-    #             }
+    #             child_id=child_id
     #         )
-    #         if not created:
-    #             obj.mother_name = mother_name
-    #             obj.child_name = child_name
-    #             obj.save()
-    #
     #         count += 1
+    #
     # print(f"Imported {count} mother-child records into database.")
 
-    # return redirect("/login/")
-    return redirect("/patient_list/")
+    return redirect("/login/")
+    # return redirect("/patient_list/")
 
 
 def launch(request):
     iss = request.GET.get("iss")
-    launch = request.GET.get("launch")
+    launch_id = request.GET.get("launch")
 
-    request.session["iss"] = iss
-    request.session["launch"] = launch
-
+    request.session['iss'] = settings.FHIR_ISS_URL
+    request.session["launch"] = launch_id
     config_url = iss.rstrip('/') + "/.well-known/smart-configuration"
     r = requests.get(config_url)
     smart_config = r.json()
@@ -145,7 +117,7 @@ def launch(request):
 
     auth_url = f"{auth_endpoint}?response_type=code&client_id={settings.FHIR_CLIENT_ID}" \
                f"&redirect_uri={settings.FHIR_REDIRECT_URI}&scope={settings.FHIR_SCOPE}" \
-               f"&aud={iss}&launch={launch}"
+               f"&aud={iss}&launch={launch_id}"
 
     return redirect(auth_url)
 
@@ -155,6 +127,11 @@ def login_view(request):
         return render(request, "login.html")
 
     if request.method == 'POST':
+        # data={
+        #     'username':'404',
+        #     'password':'123456',
+        # }
+        # User.objects.create_user(**data)
         data = json.loads(request.body)
         form = LoginForm(data)
         if not form.is_valid():

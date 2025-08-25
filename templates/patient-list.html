@@ -79,6 +79,36 @@
                         </tr>
                     {% endfor %}
                     </tbody>
+                    <tfoot>
+                    <tr>
+                        <td colspan="3" style="padding: 1em 0px;">
+                            <div class="pagination">
+                                {% if has_prev %}
+                                    <a class="btn btn-default btn-sm"
+                                       href="?page={{ page|add:"-1" }}&count={{ count }}">
+                                        <span class="glyphicon glyphicon-menu-left"></span> Previous
+                                    </a>
+                                {% else %}
+                                    <button class="btn btn-default btn-sm" disabled>
+                                        <span class="glyphicon glyphicon-menu-left"></span> Previous
+                                    </button>
+                                {% endif %}
+
+                                <span style="margin: 0 1em;">Page {{ page }}</span>
+
+                                {% if has_next %}
+                                    <a class="btn btn-primary btn-sm" href="?p={{ page|add:"1" }}&c={{ count }}">
+                                        Next <span class="glyphicon glyphicon-menu-right"></span>
+                                    </a>
+                                {% else %}
+                                    <button class="btn btn-primary btn-sm" disabled>
+                                        Next <span class="glyphicon glyphicon-menu-right"></span>
+                                    </button>
+                                {% endif %}
+                            </div>
+                        </td>
+                    </tr>
+                    </tfoot>
                 </table>
             </div>
         </div>
